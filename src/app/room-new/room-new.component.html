@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-title>Creating a new room</mat-card-title>
+  <form [formGroup]="roomNewFormGroup" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <input matInput placeholder="Room name" formControlName="nameFormControl">
+      <mat-error *ngIf="nameFormControl.errors && !nameFormControl.hasError('required')">
+        Room name is 30 letters maximum.
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Room name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Break time" formControlName="breakFormControl">
+        <mat-option value="0">0 min (No break time)</mat-option>
+        <mat-option value="5">5 min</mat-option>
+        <mat-option value="10">10 min</mat-option>
+        <mat-option value="15">15 min</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Chat" formControlName="chatFormControl">
+        <mat-option value="never">No chat</mat-option>
+        <mat-option value="break">Only break time</mat-option>
+        <mat-option value="always">Always</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="publicFormControl" (change)="toggle(publicFormControl.value)">
+      Public
+    </mat-checkbox>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="passwordFormControl">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="description" formControlName="descFormControl"></textarea>
+      <mat-error *ngIf="descFormControl.errors">
+        Description is 1000 letters maximum.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!roomNewFormGroup.valid">Create Room</button>
+  </form>
+</mat-card>

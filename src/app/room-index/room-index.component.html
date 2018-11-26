@@ -1,0 +1,42 @@
+<mat-form-field>
+  <input matInput placeholder="Search">
+</mat-form-field>
+<button mat-stroked-button color="primary" [disabled]="false">GO</button>
+<button mat-icon-button color="primary" (click)="onSubmit()">
+  <mat-icon>update</mat-icon>
+</button>
+
+
+<mat-accordion>
+
+  <mat-expansion-panel *ngFor="let room of roomList">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{room.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{room.breakTime}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-chip-list>
+      <mat-chip color="primary" selected>Break time: {{room.breakTime}}min</mat-chip>
+      <mat-chip color="accent" selected>Chat: {{room.chat}}</mat-chip>
+      <mat-chip color="warning" selected *ngIf="!room.isPublic">Private</mat-chip>
+    </mat-chip-list>
+    <mat-divider></mat-divider>
+    {{room.desc}}
+    <button mat-raised-button routerLink='/rooms/{{room.id}}'>Enter</button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        test2
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
