@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Session } from '../../session';
 import { Password } from '../../password';
+import { User } from '../../user';
+import { UserService } from '../../user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +16,17 @@ export class SessionService {
   public sessionSubject = new Subject<Session>();
   public sessionState = this.sessionSubject.asObservable();
 
-  signup(account: Password): void { // 追加
+  signup(account: Password, name: string): void { // 追加
     this.afAuth
       .auth
       .createUserWithEmailAndPassword(account.email, account.password) // アカウント作成
-      .then(auth => auth.user.sendEmailVerification()) // メールアドレス確認
-      .then(() => alert('メールアドレス確認メールを送信しました。'))
+      .then(auth => {
+        auth.user.sendEmailVerification();
+        this.userService.createUserWithIdAndName(auth.user.uid, name);
+      }) // メールアドレス確認
+      .then(() => {
+        alert('メールアドレス確認メールを送信しました。');
+      })
       .catch(err => {
         console.log(err);
         alert('アカウントの作成に失敗しました。\n' + err)
@@ -37,6 +44,7 @@ export class SessionService {
           return Promise.reject('メールアドレスが確認できていません。');
         } else {
           this.session.login = true;
+          this.session.uid = auth.user.uid;
           this.sessionSubject.next(this.session);
           //return this.router.navigate(['/']);
         }
@@ -62,5 +70,28 @@ export class SessionService {
       })
   }
 
-  constructor(private afAuth: AngularFireAuth) { }
+  // ログイン状況確認
+  checkLogin(): void { // 追加
+    this.afAuth
+      .authState
+      .subscribe(auth => {
+        // ログイン状態を返り値の有無で判断
+        this.session.login = (!!auth);
+        this.sessionSubject.next(this.session);
+      });
+  }
+
+  checkLoginState(): Observable<Session> { // 追加
+    return this.afAuth
+      .authState
+      .pipe(
+        map(auth => {
+          // ログイン状態を返り値の有無で判断
+          this.session.login = (!!auth);
+          return this.session;
+        })
+      )
+  }
+
+  constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
 }

@@ -48,6 +48,24 @@ import { RoomNewComponent } from './room-new/room-new.component';
 import { RoomsTopComponent } from './rooms-top/rooms-top.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
+import { AuthGuard } from './core/guard/auth.guard';
+
+const appRoutes: Routes = [
+  /*{
+    path: 'account',
+    loadChildren: './account/account.module#AccountModule'
+  },*/
+  {
+    path: '',
+    component: RoomsComponent,
+    canActivate: [AuthGuard],  // 追加
+  },
+  /*{
+    path: '**',
+    component: PageNotFoundComponent
+  },*/
+];
+
 @NgModule({
   declarations: [
     AppComponent,

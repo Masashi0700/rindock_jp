@@ -36,7 +36,7 @@ export class UserSignupComponent implements OnInit {
     this.account.email = this.userSignUpFormGroup.get('emailFormControl').value;
     this.account.password = this.userSignUpFormGroup.get('passwordFormControl').value;
 
-    this.session.signup(this.account);
+    this.session.signup(this.account, this.userSignUpFormGroup.get('nameFormControl').value);
     this.account.reset();
     console.warn(this.account);
   }

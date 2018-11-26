@@ -14,9 +14,10 @@ export class ToolBarComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+
   }
 
-  onLoginClick(){
+  onLoginClick() {
     const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '400px'
     });
