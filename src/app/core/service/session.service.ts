@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Session } from '../../session';
@@ -15,6 +16,8 @@ export class SessionService {
   public session = new Session();
   public sessionSubject = new Subject<Session>();
   public sessionState = this.sessionSubject.asObservable();
+
+  authState: any = null;
 
   signup(account: Password, name: string): void { // 追加
     this.afAuth
@@ -93,5 +96,29 @@ export class SessionService {
       )
   }
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
+  // Returns true if user is logged in
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  // Returns current user data
+  get currentUser(): any {
+    return this.authenticated ? this.authState : null;
+  }
+
+  // Returns
+  get currentUserObservable(): any {
+    return this.afAuth.authState
+  }
+
+  // Returns current user UID
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : '';
+  }
+
+  constructor(private afAuth: AngularFireAuth, private userService: UserService) {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth
+    });
+  }
 }

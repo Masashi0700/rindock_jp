@@ -17,4 +17,8 @@ export class UserService {
       .set(new User(uid, name).deserialize());
   }
 
+  getUserWithId(uid: string): Observable<User>{
+    return this.db.collection('users').doc<User>(uid).valueChanges();
+  }
+
 }

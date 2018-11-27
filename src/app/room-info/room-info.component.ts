@@ -11,20 +11,27 @@ import { RoomService } from '../room.service';
 })
 export class RoomInfoComponent implements OnInit {
 
-  room: Room;
+  name: string;
+  breakTime: string;
+  desc: string;
 
   constructor(private route: ActivatedRoute,
     private roomService: RoomService,
-    private location: Location) { }
+    private location: Location) {
+      this.getRoomData();
+    }
 
   ngOnInit() {
-    this.getRoom();
   }
 
-  getRoom() {
+  getRoomData() {
     const id = this.route.snapshot.paramMap.get('id');
     this.roomService.getRoom(id)
-      .subscribe(room => this.room = room);
+      .subscribe(room => {
+        this.name = room.name;
+        this.breakTime = room.breakTime;
+        this.desc = room.desc;
+      });
   }
 
 }
