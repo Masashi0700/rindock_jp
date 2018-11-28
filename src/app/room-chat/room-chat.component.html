@@ -1,55 +1,28 @@
 <mat-card>
-  <mat-card-title>title</mat-card-title>
-  <mat-card-subtitle>subtitle</mat-card-subtitle>
   <mat-card-content class="orikaeshi">
-    contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontenntentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
-  </mat-card-content>
-  <mat-card-actions>action</mat-card-actions>
-  <mat-card-footer>footer</mat-card-footer>
-  test commment
-</mat-card>
-
-<mat-card>
-  <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうえおあえいうおあえいうあえおいうあえおいうあえおいうあおいえふおいえおあいｆｊｓｆｊｄｋｌｆじゃｌｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
+    あいうえおあいうえおあいうｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
   </mat-card-content>
   <mat-card-subtitle class="hidariyose">
     あいうえお @aiueo 2018:11:08:16:31
   </mat-card-subtitle>
 </mat-card>
 
-<mat-card>
+<mat-card *ngFor="let comment of chat">
   <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうえおあえいうおあえいうあえおいうあえおいうあえおいうあおいえふおいえおあいｆｊｓｆｊｄｋｌｆじゃｌｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
+    {{comment.content}}
   </mat-card-content>
-  <mat-card-subtitle class="hidariyose">
-    あいうえお @aiueo 2018:11:08:16:31
+  <mat-card-subtitle class="hidariyose orikaeshi">
+    {{comment.uid}} {{comment.date}}
   </mat-card-subtitle>
 </mat-card>
 
-<mat-card>
-  <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうえおあえいうおあえいうあえおいうあえおいうあえおいうあおいえふおいえおあいｆｊｓｆｊｄｋｌｆじゃｌｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
-  </mat-card-content>
-  <mat-card-subtitle class="hidariyose">
-    あいうえお @aiueo 2018:11:08:16:31
-  </mat-card-subtitle>
-</mat-card>
 
 <mat-card>
-  <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうえおあえいうおあえいうあえおいうあえおいうあえおいうあおいえふおいえおあいｆｊｓｆｊｄｋｌｆじゃｌｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
-  </mat-card-content>
-  <mat-card-subtitle class="hidariyose">
-    あいうえお @aiueo 2018:11:08:16:31
-  </mat-card-subtitle>
-</mat-card>
-
-<mat-card>
-  <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうえおあえいうおあえいうあえおいうあえおいうあえおいうあおいえふおいえおあいｆｊｓｆｊｄｋｌｆじゃｌｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
-  </mat-card-content>
-  <mat-card-subtitle class="hidariyose">
-    あいうえお @aiueo 2018:11:08:16:31
-  </mat-card-subtitle>
+  <mat-form-field>
+    <textarea matInput placeholder="Comment" [formControl]="chatFormControl"></textarea>
+    <mat-error *ngIf="!chatFormControl.hasError('required') && chatFormControl.errors">
+      Comment is 500 words max.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!chatFormControl.valid">Post</button>
 </mat-card>
