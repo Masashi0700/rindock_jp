@@ -24,10 +24,8 @@ export class RoomChatComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private commentService: CommentService,
     private session: SessionService) {
-      
-    const id = this.route.snapshot.paramMap.get('id');
-    this.commentService.getChat(id).subscribe(chat => this.chat = chat);
-
+    this.commentService.getChat(this.route.snapshot.paramMap.get('id'))
+      .subscribe(chat => this.chat = chat);
   }
 
   ngOnInit() {
@@ -37,8 +35,7 @@ export class RoomChatComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.createComment();
     this.commentService.postComment(this.comment, id);
-    this.chatFormControl.value = '';
-    console.warn(this.comment);
+    this.chatFormControl.reset();
   }
 
   createComment() {

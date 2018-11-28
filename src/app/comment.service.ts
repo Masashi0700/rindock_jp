@@ -16,7 +16,6 @@ export class CommentService {
   postComment(comment: Comment, roomId: string) {
     this.id = this.db.createId();
     comment.commentId = this.id;
-    console.warn(comment);
     this.db
       .collection('rooms')
       .doc(roomId)
@@ -28,8 +27,8 @@ export class CommentService {
   getChat(roomId: string): Observable<Comment[]> {
     return this.db.collection('rooms')
       .doc(roomId)
-      .collection<Comment[]>('chat')
-      .valueChanges()
+      .collection<Comment>('chat')
+      .valueChanges();
   }
 
 }

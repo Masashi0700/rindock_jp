@@ -49,6 +49,8 @@ import { RoomsTopComponent } from './rooms-top/rooms-top.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { PostIndexComponent } from './post-index/post-index.component';
+import { RoomPostComponent } from './room-post/room-post.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     RoomsTopComponent,
     UserDialogComponent,
     PageNotFoundComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    PostIndexComponent,
+    RoomPostComponent
   ],
   imports: [
     BrowserModule,

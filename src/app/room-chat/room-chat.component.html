@@ -12,7 +12,7 @@
     {{comment.content}}
   </mat-card-content>
   <mat-card-subtitle class="hidariyose orikaeshi">
-    {{comment.uid}} {{comment.date}}
+    {{comment.uid}} {{comment.date | date: 'medium'}}
   </mat-card-subtitle>
 </mat-card>
 
