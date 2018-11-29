@@ -28,4 +28,21 @@ export class PostService {
       });
     }
   }
+
+  getPostsObservableWithRoomId(roomId: string): Observable<Post[]> {
+    return this.db.collection<Post>('posts', ref => ref.where('roomId', '==', roomId))
+      .valueChanges();
+  }
+
+  getPostImgWithPostIdAndImgName(postId: string, imgName: string): string {
+    const imgRef = firebase.storage().ref().child('posts').child(postId).child(imgName);
+    var imgUrl;
+    imgRef.getDownloadURL().then(url => {
+      imgUrl = url;
+      console.warn(url);
+    });
+    return imgUrl;
+  }
+
+
 }

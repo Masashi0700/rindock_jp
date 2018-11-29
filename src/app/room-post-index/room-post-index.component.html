@@ -1,0 +1,16 @@
+<mat-card *ngFor="let post of posts">
+  <mat-card-header>
+    <mat-card-title>ID: {{post.uid}}</mat-card-title>
+    <mat-card-subtitle>@: {{post.roomId}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image *ngIf="!!post.imgName" [src]="this.postService.getPostImgWithPostIdAndImgName(post.postId,post.imgName)" alt="Preview of your post image">
+  <mat-card-content>
+    <p>
+      {{post.content}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

@@ -51,6 +51,7 @@ import { PageNotFoundComponent } from './error/page-not-found/page-not-found.com
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PostIndexComponent } from './post-index/post-index.component';
 import { RoomPostComponent } from './room-post/room-post.component';
+import { RoomPostIndexComponent } from './room-post-index/room-post-index.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { RoomPostComponent } from './room-post/room-post.component';
     PageNotFoundComponent,
     UserDetailComponent,
     PostIndexComponent,
-    RoomPostComponent
+    RoomPostComponent,
+    RoomPostIndexComponent
   ],
   imports: [
     BrowserModule,
