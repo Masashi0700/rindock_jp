@@ -3,7 +3,7 @@
     <mat-card-title>ID: {{post.uid}}</mat-card-title>
     <mat-card-subtitle>@: {{post.roomId}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image *ngIf="!!post.imgName" [src]="this.postService.getPostImgWithPostIdAndImgName(post.postId,post.imgName)" alt="Preview of your post image">
+  <img mat-card-image *ngIf="!!post.imgName" [src]="post.imgUrl" alt="Preview of your post image">
   <mat-card-content>
     <p>
       {{post.content}}

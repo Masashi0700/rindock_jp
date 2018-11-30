@@ -15,17 +15,36 @@ export class PostService {
 
   createPost(post: Post, file: File) {
     const postId = this.db.createId();
-    post.postId = postId;
-    this.db
-      .collection('posts')
-      .doc(postId)
-      .set(post.deserialize());
 
     if (post.imgName) {
       const imgRef = firebase.storage().ref().child('posts').child(postId).child(post.imgName);
-      imgRef.put(file).then(function(snapshot) {
-        console.log('Uploaded a blob or file!');
+      var uploadTask = imgRef.put(file);
+      uploadTask.then(() => {
+        imgRef.getDownloadURL().then(url => {
+          post.imgUrl = url;
+          post.postId = postId;
+          this.db
+            .collection('posts')
+            .doc(postId)
+            .set(post.deserialize());
+          console.warn("Uploaded with img" + post);
+          post.reset();
+        }).catch(err => {
+          console.warn(err);
+          post.reset();
+        });
+      }).catch(err => {
+        console.warn(err);
+        post.reset();
       });
+    } else {
+      post.postId = postId;
+      this.db
+        .collection('posts')
+        .doc(postId)
+        .set(post.deserialize());
+      console.warn("uploaded without img" + post);
+      post.reset();
     }
   }
 
@@ -34,14 +53,14 @@ export class PostService {
       .valueChanges();
   }
 
-  getPostImgWithPostIdAndImgName(postId: string, imgName: string): string {
+  getPostImgWithPostIdAndImgName(postId: string, imgName: string): any {
+    const noImgPath = 'assets/no-image-icon.png';
     const imgRef = firebase.storage().ref().child('posts').child(postId).child(imgName);
-    var imgUrl;
-    imgRef.getDownloadURL().then(url => {
-      imgUrl = url;
+    return imgRef.getDownloadURL().then(url => {
       console.warn(url);
+    }).catch(err => {
+      console.warn(noImgPath);
     });
-    return imgUrl;
   }
 
 

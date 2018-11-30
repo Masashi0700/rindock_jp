@@ -45,8 +45,6 @@ export class RoomPostComponent implements OnInit {
       post.imgName = this.file.name;
     }
     this.postService.createPost(post, this.file);
-    console.warn(post);
-    post.reset();
   }
 
   constructor(private route: ActivatedRoute,

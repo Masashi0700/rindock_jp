@@ -4,6 +4,7 @@ export class Post {
 
   postId: string;
   imgName: string;
+  imgUrl: string;
   uid: string;
   content: string;
   roomId: string;
@@ -12,6 +13,7 @@ export class Post {
   constructor(uid: string, content: string) {
     this.postId = '';
     this.imgName = '';
+    this.imgUrl = '';
     this.uid = uid;
     this.content = content;
     this.roomId = '';
@@ -21,6 +23,7 @@ export class Post {
   reset() {
     this.postId = '';
     this.imgName = '';
+    this.imgUrl = '';
     this.uid = '';
     this.content = '';
     this.roomId = '';

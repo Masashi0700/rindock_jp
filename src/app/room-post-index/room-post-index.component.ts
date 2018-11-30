@@ -18,7 +18,6 @@ export class RoomPostIndexComponent implements OnInit {
     const roomId = this.route.snapshot.paramMap.get('id');
     this.postService.getPostsObservableWithRoomId(roomId)
       .subscribe(posts => this.posts = posts);
-    //this.postService.getPostImgWithPostIdAndImgName("5TLsmksVtx62csJWpizr", "bed.PNG");
   }
 
   ngOnInit() {
