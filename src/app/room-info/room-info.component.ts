@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
 
@@ -11,27 +12,15 @@ import { RoomService } from '../room.service';
 })
 export class RoomInfoComponent implements OnInit {
 
-  name: string;
-  breakTime: string;
-  desc: string;
+  room: Observable<Room>;
 
   constructor(private route: ActivatedRoute,
     private roomService: RoomService,
     private location: Location) {
-      this.getRoomData();
-    }
-
-  ngOnInit() {
+    this.room = this.roomService.getRoom(this.route.snapshot.paramMap.get('id'));
   }
 
-  getRoomData() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.roomService.getRoom(id)
-      .subscribe(room => {
-        this.name = room.name;
-        this.breakTime = room.breakTime;
-        this.desc = room.desc;
-      });
+  ngOnInit() {
   }
 
 }

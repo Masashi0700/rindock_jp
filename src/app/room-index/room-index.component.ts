@@ -11,18 +11,18 @@ import { ROOMS } from '../mock-room';
 })
 export class RoomIndexComponent implements OnInit {
 
-  //roomList = ROOMS;
-  roomList: Room[];
+  roomList: Observable<Room[]>;
 
   constructor(private roomService: RoomService) {
+    this.roomList = this.roomService.getRoomList();
   }
 
   ngOnInit() {
-    this.onSubmit();
+
   }
 
   onSubmit(){
-    this.roomService.getRoomList().subscribe(roomList => this.roomList = roomList);
+    this.roomList = this.roomService.getRoomList();
   }
 
 }

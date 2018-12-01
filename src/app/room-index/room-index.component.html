@@ -9,7 +9,7 @@
 
 <mat-accordion>
 
-  <mat-expansion-panel *ngFor="let room of roomList">
+  <mat-expansion-panel *ngFor="let room of (roomList | async)">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{room.name}}

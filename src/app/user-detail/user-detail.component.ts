@@ -12,27 +12,17 @@ import { SessionService } from '../core/service/session.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  name: string;
-  uid: string;
-  desc: string;
+  user: Observable<User>;
 
   constructor(private userService: UserService,
     private route: ActivatedRoute,
     private session: SessionService) {
-    this.getUserData();
+    this.user = this.userService.getUserWithId(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
   }
 
-  getUserData() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.userService.getUserWithId(id).subscribe(user => {
-      this.name = user.name;
-      this.uid = user.uid;
-      this.desc = user.desc;
-    });
-  }
 
   onLogOutClicked(){
     this.session.logout();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
 import { Comment } from '../comment';
 import { CommentService } from '../comment.service';
@@ -14,7 +15,7 @@ import { Location } from '@angular/common';
 export class RoomChatComponent implements OnInit {
 
   comment: Comment;
-  chat: Comment[];
+  chat: Observable<Comment[]>;
 
   chatFormControl = new FormControl('', [
     Validators.required,
@@ -24,8 +25,7 @@ export class RoomChatComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private commentService: CommentService,
     private session: SessionService) {
-    this.commentService.getChat(this.route.snapshot.paramMap.get('id'))
-      .subscribe(chat => this.chat = chat);
+    this.chat = this.commentService.getChat(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {

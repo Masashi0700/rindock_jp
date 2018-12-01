@@ -1,13 +1,4 @@
-<mat-card>
-  <mat-card-content class="orikaeshi">
-    あいうえおあいうえおあいうｓｋｄｆじえおあｊふぇい；ｊ；ｄさｊｆ；ｌｓかｊｆ
-  </mat-card-content>
-  <mat-card-subtitle class="hidariyose">
-    あいうえお @aiueo 2018:11:08:16:31
-  </mat-card-subtitle>
-</mat-card>
-
-<mat-card *ngFor="let comment of chat">
+<mat-card *ngFor="let comment of (chat | async)">
   <mat-card-content class="orikaeshi">
     {{comment.content}}
   </mat-card-content>

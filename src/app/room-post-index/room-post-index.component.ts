@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Post } from '../post';
 import { PostService } from '../post.service';
+import { UserService } from '../user.service';
+import { RoomService } from '../room.service';
 
 @Component({
   selector: 'app-room-post-index',
@@ -11,13 +14,14 @@ import { PostService } from '../post.service';
 })
 export class RoomPostIndexComponent implements OnInit {
 
-  posts: Post[];
+  posts: Observable<Post[]>;
 
   constructor(private route: ActivatedRoute,
-    private postService: PostService) {
+    private postService: PostService,
+    private userService: UserService,
+    private roomService: RoomService) {
     const roomId = this.route.snapshot.paramMap.get('id');
-    this.postService.getPostsObservableWithRoomId(roomId)
-      .subscribe(posts => this.posts = posts);
+    this.posts = this.postService.getPostsObservableWithRoomId(roomId);
   }
 
   ngOnInit() {

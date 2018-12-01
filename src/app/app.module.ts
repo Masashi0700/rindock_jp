@@ -52,6 +52,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PostIndexComponent } from './post-index/post-index.component';
 import { RoomPostComponent } from './room-post/room-post.component';
 import { RoomPostIndexComponent } from './room-post-index/room-post-index.component';
+import { UidToUsernamePipe } from './pipes/uid-to-username.pipe';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { RoomPostIndexComponent } from './room-post-index/room-post-index.compon
     UserDetailComponent,
     PostIndexComponent,
     RoomPostComponent,
-    RoomPostIndexComponent
+    RoomPostIndexComponent,
+    UidToUsernamePipe
   ],
   imports: [
     BrowserModule,

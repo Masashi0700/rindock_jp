@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>{{name}}</mat-card-title>
-  <mat-card-subtitle>Rest: {{breakTime}} min</mat-card-subtitle>
-  <mat-card-content>{{desc}}</mat-card-content>
+  <mat-card-title>{{(room | async)?.name}}</mat-card-title>
+  <mat-card-subtitle>Rest: {{(room | async)?.breakTime}} min</mat-card-subtitle>
+  <mat-card-content>{{(room | async)?.desc}}</mat-card-content>
 </mat-card>
