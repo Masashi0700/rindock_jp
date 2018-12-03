@@ -1,6 +1,6 @@
 <mat-card *ngFor="let post of (posts | async)">
   <mat-card-header>
-    <mat-card-title>ID: {{(post | uidToUsername | async)?.name}}</mat-card-title>
+    <mat-card-title>ID: {{(post.userObject | async)?.name}}</mat-card-title>
     <mat-card-subtitle>@: {{post.roomId}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image *ngIf="!!post.imgName" [src]="post.imgUrl" alt="Preview of your post image">
