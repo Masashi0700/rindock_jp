@@ -12,20 +12,20 @@
   <mat-expansion-panel *ngFor="let room of (roomList | async)">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{room.name}}
+        {{room.roomName}}
       </mat-panel-title>
       <mat-panel-description>
-        {{room.breakTime}}
+        {{room.roomBreakTime}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-chip-list>
-      <mat-chip color="primary" selected>Break time: {{room.breakTime}}min</mat-chip>
-      <mat-chip color="accent" selected>Chat: {{room.chat}}</mat-chip>
+      <mat-chip color="primary" selected>Break time: {{room.roomBreakTime}}min</mat-chip>
+      <mat-chip color="accent" selected>Chat: {{room.roomChat}}</mat-chip>
       <mat-chip color="warning" selected *ngIf="!room.isPublic">Private</mat-chip>
     </mat-chip-list>
     <mat-divider></mat-divider>
-    {{room.desc}}
-    <button mat-raised-button routerLink='/rooms/{{room.id}}'>Enter</button>
+    {{room.roomDesc}}
+    <button mat-raised-button routerLink='/rooms/{{room.roomId}}'>Enter</button>
   </mat-expansion-panel>
 
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

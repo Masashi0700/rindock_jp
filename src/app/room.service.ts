@@ -17,10 +17,9 @@ export class RoomService {
 
   createRoom(room: Room) {
     this.id = this.db.createId();
-    room.id = this.id;
-    console.warn(room);
+    room.roomId = this.id;
     this.db
-      .collection('rooms').doc(room.id)
+      .collection('rooms').doc(room.roomId)
       .set(room.deserialize());
   }
 

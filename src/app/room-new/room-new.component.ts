@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
+import { SessionService } from '../core/service/session.service';
 
 @Component({
   selector: 'app-room-new',
@@ -40,7 +41,8 @@ export class RoomNewComponent implements OnInit {
     !isPublic ? control.enable() : control.disable();
   }
 
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService,
+    private session: SessionService) { }
 
   ngOnInit() {
     this.roomNewFormGroup.get('passwordFormControl').disable();
@@ -48,6 +50,7 @@ export class RoomNewComponent implements OnInit {
 
   onSubmit() {
     this.formToRoom();
+    this.room.roomOwnerId = this.session.currentUserId;
     this.roomService.createRoom(this.room);
     this.room.reset();
   }

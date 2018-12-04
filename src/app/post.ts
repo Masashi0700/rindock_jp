@@ -3,31 +3,31 @@ import * as moment from 'moment';
 export class Post {
 
   postId: string;
-  imgName: string;
-  imgUrl: string;
-  uid: string;
-  content: string;
-  roomId: string;
-  date: number;
+  postImgName: string;
+  postImgUrl: string;
+  postUId: string;
+  postContent: string;
+  postRoomId: string;
+  postDate: number;
 
   constructor(uid: string, content: string) {
     this.postId = '';
-    this.imgName = '';
-    this.imgUrl = '';
-    this.uid = uid;
-    this.content = content;
-    this.roomId = '';
-    this.date = +moment();
+    this.postImgName = '';
+    this.postImgUrl = '';
+    this.postUId = uid;
+    this.postContent = content;
+    this.postRoomId = '';
+    this.postDate = +moment();
   }
 
   reset() {
     this.postId = '';
-    this.imgName = '';
-    this.imgUrl = '';
-    this.uid = '';
-    this.content = '';
-    this.roomId = '';
-    this.date = 0;
+    this.postImgName = '';
+    this.postImgUrl = '';
+    this.postUId = '';
+    this.postContent = '';
+    this.postRoomId = '';
+    this.postDate = 0;
   }
 
   deserialize() {

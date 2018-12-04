@@ -1,31 +1,34 @@
 export class Room {
 
-  id: string;
-  name: string;
-  breakTime: string;
-  chat: string;
-  isPublic: boolean;
-  password: string;
-  desc: string;
+  roomId: string;
+  roomName: string;
+  roomBreakTime: string;
+  roomChat: string;
+  roomPublic: boolean;
+  roomPassword: string;
+  roomDesc: string;
+  roomOwnerId: string;
 
-  constructor(id: string, name: string, breakTime: string, chat: string, isPublic: boolean, password: string, desc: string) {
-    this.id = id;
-    this.name = name;
-    this.breakTime = breakTime;
-    this.chat = chat;
-    this.isPublic = isPublic;
-    this.password = password;
-    this.desc = desc;
+  constructor(roomId: string, roomName: string, breakTime: string, chat: string, isRoomPublic: boolean, roomPassword: string, roomDesc: string) {
+    this.roomId = roomId;
+    this.roomName = roomName;
+    this.roomBreakTime = breakTime;
+    this.roomChat = chat;
+    this.roomPublic = isRoomPublic;
+    this.roomPassword = roomPassword;
+    this.roomDesc = roomDesc;
+    this.roomOwnerId = '';
   }
 
   reset() {
-    this.id = '';
-    this.name = '';
-    this.breakTime = '';
-    this.chat = '';
-    this.isPublic = true;
-    this.password = '';
-    this.desc = '';
+    this.roomId = '';
+    this.roomName = '';
+    this.roomBreakTime = '';
+    this.roomChat = '';
+    this.roomPublic = true;
+    this.roomPassword = '';
+    this.roomDesc = '';
+    this.roomOwnerId = '';
   }
 
   deserialize() {

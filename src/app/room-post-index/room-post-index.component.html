@@ -1,12 +1,12 @@
-<mat-card *ngFor="let post of (posts | async)">
+<mat-card *ngFor="let post of (posts | async); let i = index">
   <mat-card-header>
-    <mat-card-title>ID: {{(post.userObject | async)?.name}}</mat-card-title>
-    <mat-card-subtitle>@: {{post.roomId}}</mat-card-subtitle>
+    <mat-card-title>Name: {{post?.name}}</mat-card-title>
+    <mat-card-subtitle>@: {{post?.roomName}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image *ngIf="!!post.imgName" [src]="post.imgUrl" alt="Preview of your post image">
+  <img mat-card-image *ngIf="!!post.postImgName" [src]="post.postImgUrl" alt="Preview of your post image">
   <mat-card-content>
     <p>
-      {{post.content}}
+      {{post.postContent}}
     </p>
   </mat-card-content>
   <mat-card-actions>

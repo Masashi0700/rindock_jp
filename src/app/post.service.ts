@@ -15,12 +15,12 @@ export class PostService {
   createPost(post: Post, file: File) {
     const postId = this.db.createId();
 
-    if (post.imgName) {
-      const imgRef = firebase.storage().ref().child('posts').child(postId).child(post.imgName);
+    if (post.postImgName) {
+      const imgRef = firebase.storage().ref().child('posts').child(postId).child(post.postImgName);
       var uploadTask = imgRef.put(file);
       uploadTask.then(() => {
         imgRef.getDownloadURL().then(url => {
-          post.imgUrl = url;
+          post.postImgUrl = url;
           post.postId = postId;
           this.db
             .collection('posts')
@@ -48,7 +48,7 @@ export class PostService {
   }
 
   getPostsObservableWithRoomId(roomId: string): Observable<Post[]> {
-    return this.db.collection<Post>('posts', ref => ref.where('roomId', '==', roomId))
+    return this.db.collection<Post>('posts', ref => ref.where('postRoomId', '==', roomId))
       .valueChanges();
   }
 

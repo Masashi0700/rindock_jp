@@ -15,13 +15,14 @@ export class RoomIndexComponent implements OnInit {
 
   constructor(private roomService: RoomService) {
     this.roomList = this.roomService.getRoomList();
+
   }
 
   ngOnInit() {
 
   }
 
-  onSubmit(){
+  onSubmit() {
     this.roomList = this.roomService.getRoomList();
   }
 

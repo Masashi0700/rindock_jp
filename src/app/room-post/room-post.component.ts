@@ -40,9 +40,9 @@ export class RoomPostComponent implements OnInit {
 
   onSubmit() {
     var post = new Post(this.session.currentUserId, this.postCommentFormControl.value);
-    post.roomId = this.route.snapshot.paramMap.get('id');
+    post.postRoomId = this.route.snapshot.paramMap.get('id');
     if (!!this.file) {
-      post.imgName = this.file.name;
+      post.postImgName = this.file.name;
     }
     this.postService.createPost(post, this.file);
   }

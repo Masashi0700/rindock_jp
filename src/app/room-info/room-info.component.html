@@ -1,5 +1,6 @@
 <mat-card>
-  <mat-card-title>{{(room | async)?.name}}</mat-card-title>
-  <mat-card-subtitle>Rest: {{(room | async)?.breakTime}} min</mat-card-subtitle>
-  <mat-card-content>{{(room | async)?.desc}}</mat-card-content>
+  <mat-card-title>{{(room | async)?.roomName}}</mat-card-title>
+  <mat-card-subtitle>Rest: {{(room | async)?.roomBreakTime}} min</mat-card-subtitle>
+  <mat-card-content>{{(room | async)?.roomDesc}}</mat-card-content>
+  <mat-card-content>{{(roomOwner | async)?.name}}</mat-card-content>
 </mat-card>
