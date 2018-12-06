@@ -1,0 +1,5 @@
+<button mat-icon-button (click)="onClickedLike()">
+  <mat-icon color="primary" *ngIf="(liked | async)">favorite</mat-icon>
+  <mat-icon color="warn" *ngIf="!(liked | async)">favorite</mat-icon>
+  <span>{{numOfLikes}}</span>
+</button>

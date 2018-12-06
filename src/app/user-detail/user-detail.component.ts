@@ -13,11 +13,13 @@ import { SessionService } from '../core/service/session.service';
 export class UserDetailComponent implements OnInit {
 
   user: Observable<User>;
+  //currentUserId: string;
 
   constructor(private userService: UserService,
     private route: ActivatedRoute,
     private session: SessionService) {
     this.user = this.userService.getUserWithId(this.route.snapshot.paramMap.get('id'));
+
   }
 
   ngOnInit() {
@@ -26,6 +28,10 @@ export class UserDetailComponent implements OnInit {
 
   onLogOutClicked(){
     this.session.logout();
+  }
+
+  onEditClicked(){
+
   }
 
 }

@@ -53,6 +53,9 @@ import { PostIndexComponent } from './post-index/post-index.component';
 import { RoomPostComponent } from './room-post/room-post.component';
 import { RoomPostIndexComponent } from './room-post-index/room-post-index.component';
 import { UidToUsernamePipe } from './pipes/uid-to-username.pipe';
+import { UserPostIndexComponent } from './user-post-index/user-post-index.component';
+import { PostSingleComponent } from './post-single/post-single.component';
+import { LikeButtonComponent } from './like-button/like-button.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,10 @@ import { UidToUsernamePipe } from './pipes/uid-to-username.pipe';
     PostIndexComponent,
     RoomPostComponent,
     RoomPostIndexComponent,
-    UidToUsernamePipe
+    UidToUsernamePipe,
+    UserPostIndexComponent,
+    PostSingleComponent,
+    LikeButtonComponent
   ],
   imports: [
     BrowserModule,

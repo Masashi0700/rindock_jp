@@ -52,6 +52,11 @@ export class PostService {
       .valueChanges();
   }
 
+  getPostsObservableWithUserId(userId: string): Observable<Post[]> {
+    return this.db.collection<Post>('posts', ref => ref.where('postUId', '==', userId))
+      .valueChanges();
+  }
+
   getPostImgWithPostIdAndImgName(postId: string, imgName: string): any {
     const noImgPath = 'assets/no-image-icon.png';
     const imgRef = firebase.storage().ref().child('posts').child(postId).child(imgName);
