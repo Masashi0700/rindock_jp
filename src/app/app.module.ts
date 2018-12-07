@@ -56,6 +56,7 @@ import { UidToUsernamePipe } from './pipes/uid-to-username.pipe';
 import { UserPostIndexComponent } from './user-post-index/user-post-index.component';
 import { PostSingleComponent } from './post-single/post-single.component';
 import { LikeButtonComponent } from './like-button/like-button.component';
+import { FollowButtonComponent } from './follow-button/follow-button.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { LikeButtonComponent } from './like-button/like-button.component';
     UidToUsernamePipe,
     UserPostIndexComponent,
     PostSingleComponent,
-    LikeButtonComponent
+    LikeButtonComponent,
+    FollowButtonComponent
   ],
   imports: [
     BrowserModule,

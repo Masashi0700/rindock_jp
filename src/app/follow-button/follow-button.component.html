@@ -1,0 +1,4 @@
+<button mat-icon-button *ngIf="this.session.currentUserId && this.session.currentUserId != internalFolloweeId" (click)="onClickedFollow()">
+  <mat-icon color="primary" *ngIf="(follow | async)">favorite</mat-icon>
+  <mat-icon color="warn" *ngIf="!(follow | async)">favorite</mat-icon>
+</button>
