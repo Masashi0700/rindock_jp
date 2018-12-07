@@ -28,16 +28,6 @@ export class ToolBarComponent implements OnInit {
       this.userId = authState.uid;
       this.userService.getUserWithId(authState.uid).subscribe(user => this.user = user);
     });
-    /*
-    this.user = this.session.currentUserObservable.pipe(
-      switchMap(authState => this.userService.getUserWithId(authState.uid))
-    );
-    /*this.session.currentUserObservable.subscribe(
-      authState => {
-        this.login = (!!authState);
-        this.userId = authState.uid;
-      }
-    );*/
   }
 
   ngOnInit() {

@@ -63,6 +63,7 @@ import { RoomEventNewComponent } from './room-event-new/room-event-new.component
 import { RoomEventIndexComponent } from './room-event-index/room-event-index.component';
 import { EventSimpleComponent } from './event-simple/event-simple.component';
 import { TagListComponent } from './tag-list/tag-list.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { TagListComponent } from './tag-list/tag-list.component';
     RoomEventNewComponent,
     RoomEventIndexComponent,
     EventSimpleComponent,
-    TagListComponent
+    TagListComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -123,7 +125,10 @@ import { TagListComponent } from './tag-list/tag-list.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  entryComponents: [UserDialogComponent],
+  entryComponents: [
+    UserDialogComponent,
+    PostDetailComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

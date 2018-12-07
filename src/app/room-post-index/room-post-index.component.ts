@@ -22,5 +22,4 @@ export class RoomPostIndexComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
