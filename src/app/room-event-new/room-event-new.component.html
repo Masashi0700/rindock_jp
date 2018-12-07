@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Creating a new event</mat-card-title>
+  <form [formGroup]="eventNewFormGroup" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <input matInput placeholder="Event name" formControlName="nameFormControl">
+      <mat-error *ngIf="nameFormControl.errors && !nameFormControl.hasError('required')">
+        Event name is 30 letters maximum.
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Event name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="description" formControlName="descFormControl"></textarea>
+      <mat-error *ngIf="descFormControl.errors && !descFormControl.required">
+        Description is 1000 letters maximum.
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Event desc is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!eventNewFormGroup.valid">Create Event</button>
+  </form>
+</mat-card>

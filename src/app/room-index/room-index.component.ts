@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
-import { ROOMS } from '../mock-room';
 
 @Component({
   selector: 'app-room-index',

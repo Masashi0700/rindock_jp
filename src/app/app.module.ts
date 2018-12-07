@@ -58,6 +58,10 @@ import { PostSingleComponent } from './post-single/post-single.component';
 import { LikeButtonComponent } from './like-button/like-button.component';
 import { FollowButtonComponent } from './follow-button/follow-button.component';
 import { SubButtonComponent } from './sub-button/sub-button.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { RoomEventNewComponent } from './room-event-new/room-event-new.component';
+import { RoomEventIndexComponent } from './room-event-index/room-event-index.component';
+import { EventSimpleComponent } from './event-simple/event-simple.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +89,11 @@ import { SubButtonComponent } from './sub-button/sub-button.component';
     PostSingleComponent,
     LikeButtonComponent,
     FollowButtonComponent,
-    SubButtonComponent
+    SubButtonComponent,
+    EventDetailComponent,
+    RoomEventNewComponent,
+    RoomEventIndexComponent,
+    EventSimpleComponent
   ],
   imports: [
     BrowserModule,

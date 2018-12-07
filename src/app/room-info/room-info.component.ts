@@ -27,30 +27,6 @@ export class RoomInfoComponent implements OnInit {
     this.roomOwner = this.room.pipe(
       switchMap(room => this.userService.getUserWithId(room.roomOwnerId))
     );
-    /*
-    this.room = this.roomService
-      .getRoom(this.route.snapshot.paramMap.get('id'))
-      .pipe(
-        map(room => {
-          return this.userService.getUserWithId(room.roomOwnerId).pipe(map(owner => {
-            return { ...room, ...owner };
-          }));
-        }),
-        mergeMap(room => {
-          return combineLatest(room)
-        })
-      );
-*/
-    /*
-        const getRoomOwner = map((room: Room) => {
-          if(room.roomOwnerId !== undefined){
-            this.roomOwner = this.userService.getUserWithId(room.roomOwnerId)
-          }else{
-            this.roomOwner = EMPTY;
-          }
-        });
-        getRoomOwner(this.room).subscribe();
-        */
   }
 
   ngOnInit() {
