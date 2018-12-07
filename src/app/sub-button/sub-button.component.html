@@ -1,0 +1,4 @@
+<button mat-icon-button *ngIf="this.session.currentUserId" (click)="onClickedSubs()">
+  <mat-icon color="primary" *ngIf="(subs | async)">favorite</mat-icon>
+  <mat-icon color="warn" *ngIf="!(subs | async)">favorite</mat-icon>
+</button>

@@ -57,6 +57,7 @@ import { UserPostIndexComponent } from './user-post-index/user-post-index.compon
 import { PostSingleComponent } from './post-single/post-single.component';
 import { LikeButtonComponent } from './like-button/like-button.component';
 import { FollowButtonComponent } from './follow-button/follow-button.component';
+import { SubButtonComponent } from './sub-button/sub-button.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { FollowButtonComponent } from './follow-button/follow-button.component';
     UserPostIndexComponent,
     PostSingleComponent,
     LikeButtonComponent,
-    FollowButtonComponent
+    FollowButtonComponent,
+    SubButtonComponent
   ],
   imports: [
     BrowserModule,
