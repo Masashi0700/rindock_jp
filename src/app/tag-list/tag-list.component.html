@@ -1,0 +1,9 @@
+<mat-chip-list>
+  <mat-chip *ngFor="let tag of (tags | async)">{{tag.content}}</mat-chip>
+</mat-chip-list>
+
+<button mat-mini-fab *ngIf="internalCanEdit" (click)="onHashClicked()">#</button>
+
+<mat-form-field *ngIf="formOpen">
+  <input matInput placeholder="New tag" [formControl]="tagFormControl">
+</mat-form-field>

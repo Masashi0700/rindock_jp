@@ -4,4 +4,5 @@
   <mat-card-subtitle>Rest: {{(room | async)?.roomBreakTime}} min</mat-card-subtitle>
   <mat-card-content>{{(room | async)?.roomDesc}}</mat-card-content>
   <mat-card-content>{{(roomOwner | async)?.name}}</mat-card-content>
+  <app-tag-list [subjectId]="(room | async)?.roomId" [canEdit]="true" [subjectType]="'room'"></app-tag-list>
 </mat-card>

@@ -62,6 +62,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { RoomEventNewComponent } from './room-event-new/room-event-new.component';
 import { RoomEventIndexComponent } from './room-event-index/room-event-index.component';
 import { EventSimpleComponent } from './event-simple/event-simple.component';
+import { TagListComponent } from './tag-list/tag-list.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { EventSimpleComponent } from './event-simple/event-simple.component';
     EventDetailComponent,
     RoomEventNewComponent,
     RoomEventIndexComponent,
-    EventSimpleComponent
+    EventSimpleComponent,
+    TagListComponent
   ],
   imports: [
     BrowserModule,
