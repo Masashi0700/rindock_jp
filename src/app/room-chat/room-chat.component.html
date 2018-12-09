@@ -1,19 +1,8 @@
-<mat-card *ngFor="let comment of (chat | async)">
-  <mat-card-content class="orikaeshi">
-    {{comment.content}}
-  </mat-card-content>
-  <mat-card-subtitle class="hidariyose orikaeshi">
-    {{comment.uid}} {{comment.date | date: 'medium'}}
-  </mat-card-subtitle>
-</mat-card>
-
-
 <mat-card>
-  <mat-form-field>
-    <textarea matInput placeholder="Comment" [formControl]="chatFormControl"></textarea>
-    <mat-error *ngIf="!chatFormControl.hasError('required') && chatFormControl.errors">
-      Comment is 500 words max.
-    </mat-error>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!chatFormControl.valid">Post</button>
+  <span>Chat</span>
+  <button mat-button (click)="onClickedComment()">
+    <mat-icon>comment</mat-icon>Add a comment!
+  </button>
 </mat-card>
+
+<app-room-comment *ngFor="let comment of (chat | async)" [comment]="comment"></app-room-comment>

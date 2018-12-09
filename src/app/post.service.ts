@@ -84,13 +84,17 @@ export class PostService {
     }
   }
 
+  getAPostWithPostId(postId: string): Observable<Post> {
+    return this.db.collection('posts').doc<Post>(postId).valueChanges();
+  }
+
   getReplyWithPostId(postId: string): Observable<Post[]> {
     return this.db.collection<Post>('posts', ref => ref.where('postReplyId', '==', postId))
       .valueChanges();
   }
 
   getPostsObservableWithRoomId(roomId: string): Observable<Post[]> {
-    return this.db.collection<Post>('posts', ref => ref.where('postRoomId', '==', roomId))
+    return this.db.collection<Post>('posts', ref => ref.where('postRoomId', '==', roomId).where('postReplyId', '==', ''))
       .valueChanges();
   }
 

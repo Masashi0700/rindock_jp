@@ -5,25 +5,27 @@ import { User } from '../user';
 import { Room } from '../room';
 import { UserService } from '../user.service';
 import { RoomService } from '../room.service';
+import { PostService } from '../post.service';
 import { PostDetailComponent } from '../post-detail/post-detail.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-post-single',
-  templateUrl: './post-single.component.html',
-  styleUrls: ['./post-single.component.css']
+  selector: 'app-post-reply',
+  templateUrl: './post-reply.component.html',
+  styleUrls: ['./post-reply.component.css']
 })
-export class PostSingleComponent implements OnInit {
+export class PostReplyComponent implements OnInit {
+
   @Input() post: Post;
 
   public internalPost: Post;
   user: Observable<User>;
   room: Observable<Room>;
+  replyPosts: Observable<Post[]>;
 
   constructor(private userService: UserService,
     private roomService: RoomService,
-    public dialog: MatDialog) {
-  }
+    private postService: PostService) { }
 
   ngOnInit() {
   }
@@ -33,18 +35,8 @@ export class PostSingleComponent implements OnInit {
       this.internalPost = changes.post.currentValue;
       this.user = this.userService.getUserWithId(this.internalPost.postUId);
       this.room = this.roomService.getRoom(this.internalPost.postRoomId);
+      this.replyPosts = this.postService.getReplyWithPostId(this.internalPost.postId);
     }
-  }
-
-  onPostClicked() {
-    const dialogRef = this.dialog.open(PostDetailComponent, {
-      width: '500px',
-      data: {
-        post: this.internalPost,
-        user: this.user,
-        room: this.room
-      }
-    });
   }
 
 }

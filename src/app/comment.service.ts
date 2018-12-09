@@ -16,18 +16,15 @@ export class CommentService {
   postComment(comment: Comment, roomId: string) {
     this.id = this.db.createId();
     comment.commentId = this.id;
+    comment.roomId = roomId;
     this.db
-      .collection('rooms')
-      .doc(roomId)
-      .collection('chat')
+      .collection('comments')
       .doc(this.id)
       .set(comment.deserialize());
   }
 
   getChat(roomId: string): Observable<Comment[]> {
-    return this.db.collection('rooms')
-      .doc(roomId)
-      .collection<Comment>('chat')
+    return this.db.collection<Comment>('comments', ref => ref.where('roomId', '==', roomId))
       .valueChanges();
   }
 

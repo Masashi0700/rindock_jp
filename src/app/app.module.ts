@@ -66,6 +66,9 @@ import { TagListComponent } from './tag-list/tag-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { ReplyButtonComponent } from './reply-button/reply-button.component';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { PostReplyComponent } from './post-reply/post-reply.component';
+import { RoomCommentComponent } from './room-comment/room-comment.component';
+import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +104,10 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
     TagListComponent,
     PostDetailComponent,
     ReplyButtonComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    PostReplyComponent,
+    RoomCommentComponent,
+    CommentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +137,9 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
   ],
   entryComponents: [
     UserDialogComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    PostDialogComponent,
+    CommentDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-form-field>
+    <textarea matInput placeholder="Comment" [formControl]="chatFormControl"></textarea>
+    <mat-error *ngIf="!chatFormControl.hasError('required') && chatFormControl.errors">
+      Comment is 500 words max.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!chatFormControl.valid">Post</button>
+</mat-card>

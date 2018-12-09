@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-content class="orikaeshi">
+    {{internalComment?.content}}
+  </mat-card-content>
+  <mat-card-subtitle class="hidariyose orikaeshi">
+    {{(user | async)?.name}} {{comment.date | date: 'medium'}}
+  </mat-card-subtitle>
+</mat-card>

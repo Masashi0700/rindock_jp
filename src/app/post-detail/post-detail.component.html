@@ -1,17 +1,22 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>{{(user | async)?.name}}</mat-card-title>
-    <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image *ngIf="!!post.postImgName" [src]="post.postImgUrl" alt="Preview of your post image">
-  <mat-card-content>
-    <p>
-      {{post.postContent}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <app-like-button [postId]="post.postId"></app-like-button>
-    <app-reply-button [postId]="post.postId"></app-reply-button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+<mat-dialog-content>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{(user | async)?.name}}</mat-card-title>
+      <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image *ngIf="!!post.postImgName" [src]="post.postImgUrl" alt="Preview of your post image">
+    <mat-card-content>
+      <p>
+        {{post.postContent}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <app-like-button [postId]="post.postId"></app-like-button>
+      <app-reply-button [post]="post" [postId]="post.postId" [roomId]="post.postRoomId"></app-reply-button>
+    </mat-card-actions>
+  </mat-card>
+
+  <app-post-reply *ngFor="let reply of (replies | async)" [post]="reply"></app-post-reply>
+
+</mat-dialog-content>

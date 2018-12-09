@@ -6,6 +6,8 @@ import { CommentService } from '../comment.service';
 import { SessionService } from '../core/service/session.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 
 @Component({
   selector: 'app-room-chat',
@@ -14,32 +16,26 @@ import { Location } from '@angular/common';
 })
 export class RoomChatComponent implements OnInit {
 
-  comment: Comment;
   chat: Observable<Comment[]>;
-
-  chatFormControl = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(500)
-  ]);
+  roomId: string;
 
   constructor(private route: ActivatedRoute,
     private commentService: CommentService,
-    private session: SessionService) {
-    this.chat = this.commentService.getChat(this.route.snapshot.paramMap.get('id'));
+    public dialog: MatDialog) {
+    this.roomId = this.route.snapshot.paramMap.get('id')
+    this.chat = this.commentService.getChat(this.roomId);
   }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.createComment();
-    this.commentService.postComment(this.comment, id);
-    this.chatFormControl.reset();
-  }
 
-  createComment() {
-    this.comment = new Comment(this.session.currentUserId, this.chatFormControl.value);
+  onClickedComment() {
+    const dialogRef = this.dialog.open(CommentDialogComponent, {
+      width: '500px',
+      data: {
+        roomId: this.roomId,
+      }
+    });
   }
-
 }

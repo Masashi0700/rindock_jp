@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Post } from '../post';
 import { PostService } from '../post.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PostDialogComponent } from '../post-dialog/post-dialog.component';
 
 @Component({
   selector: 'app-reply-button',
@@ -10,12 +12,16 @@ import { PostService } from '../post.service';
   styleUrls: ['./reply-button.component.css']
 })
 export class ReplyButtonComponent implements OnInit {
-
+  @Input() post: Post;
   @Input() postId: string;
-  public internalPostId;
+  @Input() roomId: string;
+  public internalPost: Post;
+  public internalPostId: string;
+  public internalRoomId: string;
   numOfReplys: number;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -26,10 +32,23 @@ export class ReplyButtonComponent implements OnInit {
       this.postService.getReplyWithPostId(this.internalPostId)
         .subscribe(posts => this.numOfReplys = posts.length);
     }
+    if(changes.roomId){
+      this.internalRoomId = this.roomId;
+    }
+    if(changes.post){
+      this.internalPost = this.post;
+    }
   }
 
   onClickedReply() {
-    console.warn("clicked reply button");
+    const dialogRef = this.dialog.open(PostDialogComponent, {
+      width: '500px',
+      data: {
+        roomId: this.internalRoomId,
+        replyId: this.internalPostId,
+        post: this.internalPost
+      }
+    });
   }
 
 }

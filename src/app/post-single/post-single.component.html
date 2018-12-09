@@ -11,7 +11,6 @@
   </mat-card-content>
   <mat-card-actions>
     <app-like-button [postId]="internalPost.postId"></app-like-button>
-    <app-reply-button [postId]="internalPost.postId"></app-reply-button>
-    <button mat-button>SHARE</button>
+    <app-reply-button [post]="internalPost" [postId]="internalPost.postId" [roomId]="internalPost.postRoomId"></app-reply-button>
   </mat-card-actions>
 </mat-card>
