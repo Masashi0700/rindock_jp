@@ -64,6 +64,8 @@ import { RoomEventIndexComponent } from './room-event-index/room-event-index.com
 import { EventSimpleComponent } from './event-simple/event-simple.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { ReplyButtonComponent } from './reply-button/reply-button.component';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     RoomEventIndexComponent,
     EventSimpleComponent,
     TagListComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    ReplyButtonComponent,
+    PostDialogComponent
   ],
   imports: [
     BrowserModule,

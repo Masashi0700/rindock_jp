@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header (click)="onPostClicked()">
-    <mat-card-title>Name: {{(user | async)?.name}}</mat-card-title>
-    <mat-card-subtitle>@: {{(room | async)?.roomName}}</mat-card-subtitle>
+    <mat-card-title>{{(user | async)?.name}}</mat-card-title>
+    <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image (click)="onPostClicked()" *ngIf="!!internalPost.postImgName" [src]="internalPost.postImgUrl" alt="Preview of your post image">
   <mat-card-content (click)="onPostClicked()">
@@ -11,6 +11,7 @@
   </mat-card-content>
   <mat-card-actions>
     <app-like-button [postId]="internalPost.postId"></app-like-button>
+    <app-reply-button [postId]="internalPost.postId"></app-reply-button>
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>

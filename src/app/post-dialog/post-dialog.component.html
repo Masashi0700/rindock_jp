@@ -1,0 +1,49 @@
+<mat-tab-group>
+  <mat-tab label="Post">
+    <mat-form-field>
+      <textarea matInput placeholder="Post comment" [formControl]="postCommentFormControl"></textarea>
+      <mat-error *ngIf="!postCommentFormControl.hasError('required') && postCommentFormControl.errors">
+        Comment is 1000 letters max.
+      </mat-error>
+    </mat-form-field>
+
+    <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+    <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+      <mat-icon>image</mat-icon>
+    </button>
+
+    <p class="file-name" *ngIf="!file; else fileName">No file</p>
+    <ng-template #fileName>
+      <p class="file-name">{{ file?.name }}</p>
+    </ng-template>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!postCommentFormControl.valid">Post it</button>
+  </mat-tab>
+
+  <mat-tab label="Preview">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{(currentUser | async)?.name}}</mat-card-title>
+        <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image *ngIf="!!file" [src]="imgSrc" alt="Preview of your post image">
+      <mat-card-content>
+        <p>
+          {{postCommentFormControl.value}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button>
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>comment</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-tab>
+  <mat-tab label="Original post">
+
+  </mat-tab>
+</mat-tab-group>

@@ -3,6 +3,7 @@ import * as moment from 'moment';
 export class Post {
 
   postId: string;
+  postReplyId: string;
   postImgName: string;
   postImgUrl: string;
   postUId: string;
@@ -12,6 +13,7 @@ export class Post {
 
   constructor(uid: string, content: string) {
     this.postId = '';
+    this.postReplyId = '';
     this.postImgName = '';
     this.postImgUrl = '';
     this.postUId = uid;
@@ -22,6 +24,7 @@ export class Post {
 
   reset() {
     this.postId = '';
+    this.postReplyId = '';
     this.postImgName = '';
     this.postImgUrl = '';
     this.postUId = '';

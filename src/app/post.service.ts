@@ -47,6 +47,48 @@ export class PostService {
     }
   }
 
+  createReply(post: Post, file: File, replyId: string) {
+    const postId = this.db.createId();
+
+    if (post.postImgName) {
+      const imgRef = firebase.storage().ref().child('posts').child(postId).child(post.postImgName);
+      var uploadTask = imgRef.put(file);
+      uploadTask.then(() => {
+        imgRef.getDownloadURL().then(url => {
+          post.postImgUrl = url;
+          post.postId = postId;
+          post.postReplyId = replyId;
+          this.db
+            .collection('posts')
+            .doc(postId)
+            .set(post.deserialize());
+          console.warn("Uploaded with img" + post);
+          post.reset();
+        }).catch(err => {
+          console.warn(err);
+          post.reset();
+        });
+      }).catch(err => {
+        console.warn(err);
+        post.reset();
+      });
+    } else {
+      post.postId = postId;
+      post.postReplyId = replyId;
+      this.db
+        .collection('posts')
+        .doc(postId)
+        .set(post.deserialize());
+      console.warn("uploaded without img" + post);
+      post.reset();
+    }
+  }
+
+  getReplyWithPostId(postId: string): Observable<Post[]> {
+    return this.db.collection<Post>('posts', ref => ref.where('postReplyId', '==', postId))
+      .valueChanges();
+  }
+
   getPostsObservableWithRoomId(roomId: string): Observable<Post[]> {
     return this.db.collection<Post>('posts', ref => ref.where('postRoomId', '==', roomId))
       .valueChanges();
