@@ -5,6 +5,6 @@ $lightgreen-theme-primary: mat-palette($mat-light-green);
 $lightgreen-theme-accent:  mat-palette($mat-pink, 500, 900, A100);
 $lightgreen-theme-warn:    mat-palette($mat-deep-orange);
 
-$lightgreen-theme: mat-dark-theme($lightgreen-theme-primary, $lightgreen-theme-accent, $lightgreen-theme-warn);
+$lightgreen-theme: mat-light-theme($lightgreen-theme-primary, $lightgreen-theme-accent, $lightgreen-theme-warn);
 
 @include angular-material-theme($lightgreen-theme);

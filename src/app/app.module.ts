@@ -69,6 +69,13 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { PostReplyComponent } from './post-reply/post-reply.component';
 import { RoomCommentComponent } from './room-comment/room-comment.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
+import { UserLikeIndexComponent } from './user-like-index/user-like-index.component';
+import { UserLikeToComponent } from './user-like-to/user-like-to.component';
+import { UserFollowIndexComponent } from './user-follow-index/user-follow-index.component';
+import { UserFollowToComponent } from './user-follow-to/user-follow-to.component';
+import { UserSimpleComponent } from './user-simple/user-simple.component';
+import { UserFollowerIndexComponent } from './user-follower-index/user-follower-index.component';
+import { UserFollowerToComponent } from './user-follower-to/user-follower-to.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +114,14 @@ import { CommentDialogComponent } from './comment-dialog/comment-dialog.componen
     PostDialogComponent,
     PostReplyComponent,
     RoomCommentComponent,
-    CommentDialogComponent
+    CommentDialogComponent,
+    UserLikeIndexComponent,
+    UserLikeToComponent,
+    UserFollowIndexComponent,
+    UserFollowToComponent,
+    UserSimpleComponent,
+    UserFollowerIndexComponent,
+    UserFollowerToComponent
   ],
   imports: [
     BrowserModule,

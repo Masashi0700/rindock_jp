@@ -1,0 +1,3 @@
+<div *ngFor="let follow of (follows | async)">
+  <app-user-follow-to *ngIf="follow" [follow]="follow"></app-user-follow-to>
+</div>

@@ -1,0 +1,3 @@
+<div *ngFor="let like of (likes | async)">
+  <app-user-like-to *ngIf="like" [like]="like"></app-user-like-to>
+</div>
