@@ -78,6 +78,8 @@ import { UserFollowerIndexComponent } from './user-follower-index/user-follower-
 import { UserFollowerToComponent } from './user-follower-to/user-follower-to.component';
 import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
 import { RoomEditDialogComponent } from './room-edit-dialog/room-edit-dialog.component';
+import { PostTimelineComponent } from './post-timeline/post-timeline.component';
+import { PostTimelineFollowingComponent } from './post-timeline-following/post-timeline-following.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +127,9 @@ import { RoomEditDialogComponent } from './room-edit-dialog/room-edit-dialog.com
     UserFollowerIndexComponent,
     UserFollowerToComponent,
     UserEditDialogComponent,
-    RoomEditDialogComponent
+    RoomEditDialogComponent,
+    PostTimelineComponent,
+    PostTimelineFollowingComponent
   ],
   imports: [
     BrowserModule,

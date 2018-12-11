@@ -1,0 +1,3 @@
+<div *ngFor="let followee of (followees | async)">
+  <app-post-timeline-following *ngIf="followee" [followeeId]="followee.followeeId"></app-post-timeline-following>
+</div>

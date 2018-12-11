@@ -5,13 +5,15 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { RoomsTopComponent } from './rooms-top/rooms-top.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { UsersComponent } from './users/users.component';
+import { PostTimelineComponent } from './post-timeline/post-timeline.component';
 import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/rooms-top', pathMatch: 'full' },
-  { path: 'rooms-top', component: RoomsTopComponent },
-  { path: 'rooms/:id', component: RoomsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/rooms', pathMatch: 'full' },
+  { path: 'rooms', component: RoomsTopComponent },
+  { path: 'rooms/:id', component: RoomsComponent },
   { path: 'users/:id', component: UsersComponent },
+  { path: 'index', component: PostTimelineComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
