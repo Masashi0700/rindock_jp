@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { User } from '../user';
-import { UserService } from '../user.service';
-import { Observable, of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 import { SessionService } from '../core/service/session.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,26 +11,37 @@ import { SessionService } from '../core/service/session.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  user: Observable<User>;
-  //currentUserId: string;
+  @Input() user: User;
+  public internalUser: User;
+  defaultAvatar = '/assets/Default_avatar.png';
 
-  constructor(private userService: UserService,
-    private route: ActivatedRoute,
-    private session: SessionService) {
-    this.user = this.userService.getUserWithId(this.route.snapshot.paramMap.get('id'));
+
+  constructor(private session: SessionService,
+    public dialog: MatDialog) {
 
   }
 
   ngOnInit() {
   }
 
+  ngOnChanges(changes: any) {
+    if (changes.user) {
+      this.internalUser = this.user;
+    }
+  }
 
-  onLogOutClicked(){
+
+  onLogOutClicked() {
     this.session.logout();
   }
 
-  onEditClicked(){
-
+  onEditClicked() {
+    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+      width: '500px',
+      data: {
+        uid: this.internalUser.uid
+      }
+    });
   }
 
 }

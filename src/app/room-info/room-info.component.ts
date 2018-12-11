@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { Observable, combineLatest } from 'rxjs';
-import { catchError, map, tap, mergeMap, switchMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs'
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../user';
 import { Room } from '../room';
-import { RoomService } from '../room.service';
 import { UserService } from '../user.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { RoomEditDialogComponent } from '../room-edit-dialog/room-edit-dialog.component';
 
 @Component({
   selector: 'app-room-info',
@@ -16,20 +13,33 @@ import { UserService } from '../user.service';
 })
 export class RoomInfoComponent implements OnInit {
 
-  room: Observable<Room>;
-  roomOwner: Observable<User>;
+  @Input() room: Room;
+  public internalRoom: Room;
 
-  constructor(private route: ActivatedRoute,
-    private roomService: RoomService,
-    private location: Location,
-    private userService: UserService) {
-    this.room = this.roomService.getRoom(this.route.snapshot.paramMap.get('id'));
-    this.roomOwner = this.room.pipe(
-      switchMap(room => this.userService.getUserWithId(room.roomOwnerId))
-    );
+  roomOwner: Observable<User>;
+  defaultRoomImg = '/assets/room_icon.png';
+
+  constructor(private userService: UserService,
+    public dialog: MatDialog) {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.room && this.room) {
+      this.internalRoom = this.room;
+      this.roomOwner = this.userService.getUserWithId(this.internalRoom.roomOwnerId);
+    }
+  }
+
+  onEditRoomClicked() {
+    const dialogRef = this.dialog.open(RoomEditDialogComponent, {
+      width: '500px',
+      data: {
+        roomId: this.internalRoom.roomId
+      }
+    });
   }
 
 }

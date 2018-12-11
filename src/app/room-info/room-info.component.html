@@ -1,8 +1,13 @@
 <mat-card>
-  <mat-card-title>{{(room | async)?.roomName}}</mat-card-title>
-  <app-sub-button [roomId]="(room | async)?.roomId"></app-sub-button>
-  <mat-card-subtitle>Rest: {{(room | async)?.roomBreakTime}} min</mat-card-subtitle>
-  <mat-card-content>{{(room | async)?.roomDesc}}</mat-card-content>
+  <mat-card-header>
+    <img mat-card-avatar *ngIf="internalRoom?.roomImgName" [src]="internalRoom?.roomImgUrl" alt="Preview of your user image">
+    <img mat-card-avatar *ngIf="!internalRoom?.roomImgName" [src]="defaultRoomImg" alt="Preview of your user image">
+    <mat-card-title>Name: {{internalRoom?.roomName}}</mat-card-title>
+  </mat-card-header>
+  <app-sub-button [roomId]="internalRoom?.roomId"></app-sub-button>
+  <mat-card-subtitle>Rest: {{internalRoom?.roomBreakTime}} min</mat-card-subtitle>
+  <mat-card-content>{{internalRoom?.roomDesc}}</mat-card-content>
   <mat-card-content>{{(roomOwner | async)?.name}}</mat-card-content>
-  <app-tag-list [subjectId]="(room | async)?.roomId" [canEdit]="true" [subjectType]="'room'"></app-tag-list>
+  <button mat-raised-button (click)="onEditRoomClicked()">Edit room</button>
+  <app-tag-list [subjectId]="internalRoom?.roomId" [canEdit]="true" [subjectType]="'room'"></app-tag-list>
 </mat-card>

@@ -76,6 +76,8 @@ import { UserFollowToComponent } from './user-follow-to/user-follow-to.component
 import { UserSimpleComponent } from './user-simple/user-simple.component';
 import { UserFollowerIndexComponent } from './user-follower-index/user-follower-index.component';
 import { UserFollowerToComponent } from './user-follower-to/user-follower-to.component';
+import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
+import { RoomEditDialogComponent } from './room-edit-dialog/room-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +123,9 @@ import { UserFollowerToComponent } from './user-follower-to/user-follower-to.com
     UserFollowToComponent,
     UserSimpleComponent,
     UserFollowerIndexComponent,
-    UserFollowerToComponent
+    UserFollowerToComponent,
+    UserEditDialogComponent,
+    RoomEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -153,7 +157,9 @@ import { UserFollowerToComponent } from './user-follower-to/user-follower-to.com
     UserDialogComponent,
     PostDetailComponent,
     PostDialogComponent,
-    CommentDialogComponent
+    CommentDialogComponent,
+    UserEditDialogComponent,
+    RoomEditDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

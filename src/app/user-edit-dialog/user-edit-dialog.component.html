@@ -1,0 +1,37 @@
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-title>Editing your profile</mat-card-title>
+    <form [formGroup]="userEditFormGroup">
+
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="nameFormControl">
+        <mat-error *ngIf="nameFormControl.errors && !nameFormControl.hasError('required')">
+          User name is 30 letters maximum.
+        </mat-error>
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          User name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="User description" formControlName="descFormControl"></textarea>
+        <mat-error *ngIf="descFormControl.errors">
+          Description is 500 letters maximum.
+        </mat-error>
+      </mat-form-field>
+
+      <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+      <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+        <mat-icon>image</mat-icon>
+      </button>
+
+      <p class="file-name" *ngIf="!file; else fileName">No file</p>
+      <ng-template #fileName>
+        <p class="file-name">{{ file?.name }}</p>
+      </ng-template>
+
+
+      <button mat-raised-button color="primary" [disabled]="!userEditFormGroup.valid" (click)="onSubmit()">Save profile</button>
+    </form>
+  </mat-card>
+</mat-dialog-content>

@@ -1,4 +1,4 @@
-<app-user-detail></app-user-detail>
+<app-user-detail [user]="user | async"></app-user-detail>
 <mat-tab-group>
   <mat-tab label="Posts">
     <app-user-post-index></app-user-post-index>

@@ -14,7 +14,6 @@ export class LikeService {
   changeLike(userId: string, postId: string) {
     const like = new Like(userId, postId);
     const likeRef = this.db.collection('likes').doc(userId + postId);
-
     likeRef.update(like.deserialize())
       .then(() => likeRef.delete())
       .catch(() => likeRef.set(like.deserialize()));

@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav opened mode="side">
-    <app-room-info></app-room-info>
+    <app-room-info [room]="(room | async)"></app-room-info>
     <app-room-event-new [room]="(room | async)"></app-room-event-new>
     <app-room-event-index [room]="(room | async)"></app-room-event-index>
   </mat-sidenav>

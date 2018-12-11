@@ -1,0 +1,53 @@
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-title>Editing room</mat-card-title>
+    <form [formGroup]="roomEditFormGroup">
+
+      <mat-form-field>
+        <input matInput placeholder="Room name" formControlName="nameFormControl">
+        <mat-error *ngIf="nameFormControl.errors && !nameFormControl.hasError('required')">
+          User name is 30 letters maximum.
+        </mat-error>
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          User name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Break time" formControlName="breakFormControl">
+          <mat-option value="0">0 min (No break time)</mat-option>
+          <mat-option value="5">5 min</mat-option>
+          <mat-option value="10">10 min</mat-option>
+          <mat-option value="15">15 min</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Chat" formControlName="chatFormControl">
+          <mat-option value="never">No chat</mat-option>
+          <mat-option value="break">Only break time</mat-option>
+          <mat-option value="always">Always</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Room description" formControlName="descFormControl"></textarea>
+        <mat-error *ngIf="descFormControl.errors">
+          Description is 500 letters maximum.
+        </mat-error>
+      </mat-form-field>
+
+      <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+      <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+        <mat-icon>image</mat-icon>
+      </button>
+
+      <p class="file-name" *ngIf="!file; else fileName">No file</p>
+      <ng-template #fileName>
+        <p class="file-name">{{ file?.name }}</p>
+      </ng-template>
+
+      <button mat-raised-button color="primary" [disabled]="!roomEditFormGroup.valid" (click)="onSubmit()">Save room data</button>
+    </form>
+  </mat-card>
+</mat-dialog-content>

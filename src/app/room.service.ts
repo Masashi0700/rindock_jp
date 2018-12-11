@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
 import { Room } from './room';
 
 @Injectable({
@@ -21,6 +23,32 @@ export class RoomService {
     this.db
       .collection('rooms').doc(room.roomId)
       .set(room.deserialize());
+  }
+
+  updateRoom(room: Room, file: File) {
+    const roomRef = this.db.collection('rooms').doc(room.roomId);
+    if (!!file) {
+      const imgRef = firebase.storage().ref().child('rooms').child(room.roomId).child(room.roomImgName);
+      var uploadTask = imgRef.put(file);
+      uploadTask.then(() => {
+        imgRef.getDownloadURL().then(url => {
+          room.roomImgUrl = url;
+          roomRef.set(room.deserialize());
+          console.warn("Updated with img" + room);
+          room.reset();
+        }).catch(err => {
+          console.warn(err);
+          room.reset();
+        });
+      }).catch(err => {
+        console.warn(err);
+        room.reset();
+      });
+    } else {
+      roomRef.set(room.deserialize());
+      console.warn("Updated without img" + room);
+      room.reset();
+    }
   }
 
   getRoomList(): Observable<Room[]> {

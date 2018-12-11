@@ -1,9 +1,11 @@
 <mat-card>
   <mat-card-header>
-      <mat-card-title>Name: {{(user | async)?.name}}</mat-card-title>
-      <app-follow-button [followeeId]="(user | async)?.uid"></app-follow-button>
+    <img mat-card-avatar *ngIf="internalUser?.imgName" [src]="internalUser?.imgUrl" alt="Preview of your user image">
+    <img mat-card-avatar *ngIf="!internalUser?.imgName" [src]="defaultAvatar" alt="Preview of your user image">
+    <mat-card-title>Name: {{internalUser?.name}}</mat-card-title>
+    <app-follow-button [followeeId]="internalUser?.uid"></app-follow-button>
   </mat-card-header>
-  <mat-card-content>{{(user | async)?.desc}}</mat-card-content>
-  <button mat-raised-button *ngIf="(user | async)?.uid == this.session.currentUserId" (click)="onLogOutClicked()">Log Out</button>
-  <button mat-raised-button *ngIf="(user | async)?.uid == this.session.currentUserId" (click)="onEditClicked()">Edit</button>
+  <mat-card-content>{{internalUser?.desc}}</mat-card-content>
+  <button mat-raised-button *ngIf="internalUser?.uid == this.session.currentUserId" (click)="onLogOutClicked()">Log Out</button>
+  <button mat-raised-button *ngIf="internalUser?.uid == this.session.currentUserId" (click)="onEditClicked()">Edit</button>
 </mat-card>
