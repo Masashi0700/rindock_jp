@@ -1,7 +1,15 @@
 <mat-card>
   <mat-card-header (click)="onPostClicked()">
-    <mat-card-title>{{(user | async)?.name}}</mat-card-title>
-    <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
+    <mat-card-title>
+      <button mat-button routerLink='/users/{{(user | async)?.uid}}'>
+        {{(user | async)?.name}}
+      </button>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <button mat-button routerLink='/rooms/{{(room | async)?.roomId}}'>
+        @{{(room | async)?.roomName}}
+      </button>
+    </mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image (click)="onPostClicked()" *ngIf="!!internalPost?.postImgName" [src]="internalPost?.postImgUrl" alt="Preview of your post image">
   <mat-card-content (click)="onPostClicked()">
