@@ -1,6 +1,5 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Like } from '../like';
 import { LikeService } from '../like.service';
 import { SessionService } from '../core/service/session.service';

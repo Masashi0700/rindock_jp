@@ -1,0 +1,26 @@
+<mat-tab-group>
+  <mat-tab label='Tutor'>
+    <div *ngFor="let tutor of (tutorList | async)">
+      <app-tutor-single *ngIf="tutor" [tutor]="tutor"></app-tutor-single>
+    </div>
+  </mat-tab>
+
+  <mat-tab label='Whitelist'>
+    <div *ngFor="let member of (whiteList | async)">
+      <app-room-member *ngIf="member" [member]="member"></app-room-member>
+    </div>
+  </mat-tab>
+
+  <mat-tab label='Blacklist'>
+    <div *ngFor="let member of (blackList | async)">
+      <app-room-member *ngIf="member" [member]="member"></app-room-member>
+    </div>
+  </mat-tab>
+
+  <mat-tab label='Waiting'>
+    <div *ngFor="let member of (waiting | async)">
+      <app-room-member *ngIf="member" [member]="member"></app-room-member>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

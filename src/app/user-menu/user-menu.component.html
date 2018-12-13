@@ -1,0 +1,14 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu" yPosition="above">
+  <button mat-menu-item (click)="onClickedTutor()">
+    Make this user a tutor
+  </button>
+  <button mat-menu-item (click)="onClickedBlackList()">
+    Blacklist this user
+  </button>
+  <button mat-menu-item (click)="onClickedMute()">
+    Mute this user
+  </button>
+</mat-menu>

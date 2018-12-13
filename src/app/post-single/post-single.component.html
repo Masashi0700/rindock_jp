@@ -20,5 +20,6 @@
   <mat-card-actions>
     <app-like-button [postId]="internalPost?.postId"></app-like-button>
     <app-reply-button [post]="internalPost" [postId]="internalPost?.postId" [roomId]="internalPost.postRoomId"></app-reply-button>
+    <app-user-menu [userId]="internalPost?.postUId" [roomId]="internalPost?.postRoomId"></app-user-menu>
   </mat-card-actions>
 </mat-card>

@@ -34,6 +34,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomIndexComponent } from './room-index/room-index.component';
@@ -80,6 +81,11 @@ import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.com
 import { RoomEditDialogComponent } from './room-edit-dialog/room-edit-dialog.component';
 import { PostTimelineComponent } from './post-timeline/post-timeline.component';
 import { PostTimelineFollowingComponent } from './post-timeline-following/post-timeline-following.component';
+import { EventLikeButtonComponent } from './event-like-button/event-like-button.component';
+import { RoomMemberComponent } from './room-member/room-member.component';
+import { RoomMemberListComponent } from './room-member-list/room-member-list.component';
+import { TutorSingleComponent } from './tutor-single/tutor-single.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +135,12 @@ import { PostTimelineFollowingComponent } from './post-timeline-following/post-t
     UserEditDialogComponent,
     RoomEditDialogComponent,
     PostTimelineComponent,
-    PostTimelineFollowingComponent
+    PostTimelineFollowingComponent,
+    EventLikeButtonComponent,
+    RoomMemberComponent,
+    RoomMemberListComponent,
+    TutorSingleComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -153,6 +164,7 @@ import { PostTimelineFollowingComponent } from './post-timeline-following/post-t
     MatExpansionModule,
     MatChipsModule,
     MatDividerModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule

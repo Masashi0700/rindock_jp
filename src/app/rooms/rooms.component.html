@@ -5,7 +5,7 @@
     <app-room-event-index [room]="(room | async)"></app-room-event-index>
   </mat-sidenav>
   <mat-sidenav  opened mode="side" position="end">
-    <app-room-chat></app-room-chat>
+    <app-room-member-list [roomId]="roomId"></app-room-member-list>
   </mat-sidenav>
   <section>
     <app-room-post-index></app-room-post-index>

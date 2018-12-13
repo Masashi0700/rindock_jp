@@ -13,10 +13,11 @@ import { RoomService } from '../room.service';
 export class RoomsComponent implements OnInit {
 
   room: Observable<Room>;
-
+  roomId: string;
   constructor(private route: ActivatedRoute,
     private roomService: RoomService,
     private location: Location) {
+    this.roomId = this.route.snapshot.paramMap.get('id')
     this.room = this.roomService.getRoom(this.route.snapshot.paramMap.get('id'));
   }
 
