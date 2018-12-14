@@ -36,6 +36,11 @@ export class PostDialogComponent implements OnInit {
   roomId: string;
   replyId: string;
 
+  userImgUrl: string;
+  replyUserImgUrl: string;
+  defaultAvatar = '/assets/Default_avatar.png';
+
+
   postCommentFormControl = new FormControl('', [
     Validators.required,
     Validators.maxLength(1000)
@@ -82,7 +87,17 @@ export class PostDialogComponent implements OnInit {
     if(this.replyId){
       this.replyUser = this.userService.getUserWithId(this.replyPost.postUId);
       this.replyRoom = this.roomService.getRoom(this.replyPost.postRoomId);
+      this.replyUser.subscribe(user => {
+        this.replyUserImgUrl = user.imgUrl;
+      });
     }
+
+    this.currentUser.subscribe(user => {
+      this.userImgUrl = user.imgUrl;
+    });
+
+
+
   }
 
   onNoClick(): void {

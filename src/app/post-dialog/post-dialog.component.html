@@ -23,6 +23,8 @@
   <mat-tab label="Preview">
     <mat-card>
       <mat-card-header>
+        <img mat-card-avatar *ngIf="(currentUser | async)?.imgName" [src]="userImgUrl" alt="Preview of your user image">
+        <img mat-card-avatar *ngIf="!(currentUser | async)?.imgName" [src]="defaultAvatar" alt="Preview of your user image">
         <mat-card-title>{{(currentUser | async)?.name}}</mat-card-title>
         <mat-card-subtitle>@{{(room | async)?.roomName}}</mat-card-subtitle>
       </mat-card-header>
@@ -46,6 +48,8 @@
   <mat-tab label="Original post" *ngIf="replyId">
     <mat-card>
       <mat-card-header>
+        <img mat-card-avatar *ngIf="(replyUser | async)?.imgName" [src]="replyUserImgUrl" alt="Preview of your user image">
+        <img mat-card-avatar *ngIf="!(replyUser | async)?.imgName" [src]="defaultAvatar" alt="Preview of your user image">
         <mat-card-title>{{(replyUser | async)?.name}}</mat-card-title>
         <mat-card-subtitle>@{{(replyRoom | async)?.roomName}}</mat-card-subtitle>
       </mat-card-header>

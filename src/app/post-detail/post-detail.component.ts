@@ -19,6 +19,9 @@ export class PostDetailComponent implements OnInit {
   user: Observable<User>;
   room: Observable<Room>;
 
+  userImgUrl: string;
+  defaultAvatar = '/assets/Default_avatar.png';
+
   replies: Observable<Post[]>;
 
   constructor(public dialogRef: MatDialogRef<PostDetailComponent>,
@@ -30,6 +33,10 @@ export class PostDetailComponent implements OnInit {
     this.user = this.userService.getUserWithId(this.post.postUId);
     this.room = this.roomService.getRoom(this.post.postRoomId);
     this.replies = this.postService.getReplyWithPostId(this.post.postId);
+
+    this.user.subscribe(user => {
+      this.userImgUrl = user.imgUrl;
+    });
   }
 
   ngOnInit() {

@@ -86,6 +86,7 @@ import { RoomMemberComponent } from './room-member/room-member.component';
 import { RoomMemberListComponent } from './room-member-list/room-member-list.component';
 import { TutorSingleComponent } from './tutor-single/tutor-single.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -140,7 +141,8 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
     RoomMemberComponent,
     RoomMemberListComponent,
     TutorSingleComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,

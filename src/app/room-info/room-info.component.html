@@ -2,7 +2,7 @@
   <mat-card-header>
     <img mat-card-avatar *ngIf="internalRoom?.roomImgName" [src]="internalRoom?.roomImgUrl" alt="Preview of your user image">
     <img mat-card-avatar *ngIf="!internalRoom?.roomImgName" [src]="defaultRoomImg" alt="Preview of your user image">
-    <mat-card-title>Name: {{internalRoom?.roomName}}</mat-card-title>
+    <mat-card-title>{{internalRoom?.roomName}}</mat-card-title>
   </mat-card-header>
   <app-sub-button [roomId]="internalRoom?.roomId"></app-sub-button>
   <mat-card-subtitle>Rest: {{internalRoom?.roomBreakTime}} min</mat-card-subtitle>

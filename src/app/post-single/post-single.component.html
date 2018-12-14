@@ -1,5 +1,7 @@
 <mat-card>
   <mat-card-header (click)="onPostClicked()">
+    <img mat-card-avatar *ngIf="(user | async)?.imgName" [src]="userImgUrl" alt="Preview of your user image">
+    <img mat-card-avatar *ngIf="!(user | async)?.imgName" [src]="defaultAvatar" alt="Preview of your user image">
     <mat-card-title>
       <button mat-button routerLink='/users/{{(user | async)?.uid}}'>
         {{(user | async)?.name}}
@@ -16,6 +18,7 @@
     <p>
       {{internalPost?.postContent}}
     </p>
+    <app-tag-list [subjectId]="internalPost?.postId" [canEdit]="true" [subjectType]="'post'"></app-tag-list>
   </mat-card-content>
   <mat-card-actions>
     <app-like-button [postId]="internalPost?.postId"></app-like-button>

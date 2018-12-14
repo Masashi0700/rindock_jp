@@ -20,6 +20,9 @@ export class PostSingleComponent implements OnInit {
   user: Observable<User>;
   room: Observable<Room>;
 
+  userImgUrl: string;
+  defaultAvatar = '/assets/Default_avatar.png';
+
   constructor(private userService: UserService,
     private roomService: RoomService,
     public dialog: MatDialog) {
@@ -33,6 +36,10 @@ export class PostSingleComponent implements OnInit {
       this.internalPost = changes.post.currentValue;
       this.user = this.userService.getUserWithId(this.internalPost.postUId);
       this.room = this.roomService.getRoom(this.internalPost.postRoomId);
+
+      this.user.subscribe(user => {
+        this.userImgUrl = user.imgUrl;
+      });
     }
   }
 

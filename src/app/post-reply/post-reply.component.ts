@@ -23,6 +23,9 @@ export class PostReplyComponent implements OnInit {
   room: Observable<Room>;
   replyPosts: Observable<Post[]>;
 
+  userImgUrl: string;
+  defaultAvatar = '/assets/Default_avatar.png';
+
   constructor(private userService: UserService,
     private roomService: RoomService,
     private postService: PostService) { }
@@ -36,6 +39,11 @@ export class PostReplyComponent implements OnInit {
       this.user = this.userService.getUserWithId(this.internalPost.postUId);
       this.room = this.roomService.getRoom(this.internalPost.postRoomId);
       this.replyPosts = this.postService.getReplyWithPostId(this.internalPost.postId);
+
+      this.user.subscribe(user => {
+        this.userImgUrl = user.imgUrl;
+      });
+
     }
   }
 
