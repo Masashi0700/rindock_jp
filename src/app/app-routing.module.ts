@@ -7,6 +7,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { UsersComponent } from './users/users.component';
 import { PostTimelineComponent } from './post-timeline/post-timeline.component';
 import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/rooms', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'rooms/:id', component: RoomsComponent },
   { path: 'users/:id', component: UsersComponent },
   { path: 'index', component: PostTimelineComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

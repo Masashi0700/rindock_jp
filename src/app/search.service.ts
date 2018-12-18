@@ -14,9 +14,23 @@ export class SearchService {
 
   constructor(private db: AngularFirestore) { }
 
-  searchPost(word: string): Observable<Post[]> {
-    return this.db.collection<Post>('posts', ref =>
-      ref.where('postContent', 'array-contains', word)).valueChanges();
+  searchWithTag(word: string): Observable<Tag[]> {
+    return this.db.collection<Tag>('tags', ref =>
+      ref.where('content', '==', word)).valueChanges();
   }
 
+  searchPost(word: string): Observable<Tag[]> {
+    return this.db.collection<Tag>('tags', ref =>
+      ref.where('subjectType', '==', 'post').where('content', '==', word)).valueChanges();
+  }
+
+  searchRoom(word: string): Observable<Tag[]> {
+    return this.db.collection<Tag>('tags', ref =>
+      ref.where('subjectType', '==', 'room').where('content', '==', word)).valueChanges();
+  }
+
+  searchUser(word: string): Observable<Tag[]> {
+    return this.db.collection<Tag>('tags', ref =>
+      ref.where('subjectType', '==', 'user').where('content', '==', word)).valueChanges();
+  }
 }

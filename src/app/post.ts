@@ -9,6 +9,8 @@ export class Post {
   postUId: string;
   postContent: string;
   postRoomId: string;
+  postNumOfLikes: number;
+  postNumOfReplys: number;
   postDate: number;
 
   constructor(uid: string, content: string) {
@@ -19,6 +21,8 @@ export class Post {
     this.postUId = uid;
     this.postContent = content;
     this.postRoomId = '';
+    this.postNumOfLikes = 0;
+    this.postNumOfReplys = 0;
     this.postDate = +moment();
   }
 
@@ -30,6 +34,8 @@ export class Post {
     this.postUId = '';
     this.postContent = '';
     this.postRoomId = '';
+    this.postNumOfLikes = 0;
+    this.postNumOfReplys = 0;
     this.postDate = 0;
   }
 

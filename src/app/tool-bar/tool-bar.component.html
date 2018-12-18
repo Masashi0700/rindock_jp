@@ -1,6 +1,7 @@
 <mat-toolbar>
   <button mat-button routerLink=''>{{title}}</button>
   <span class="toolbar-spacer"></span>
+  <button mat-button routerLink='/search'>Search</button>
   <button mat-button routerLink='/index' *ngIf="login">Timeline</button>
   <button mat-button (click)='onLoginClick()' *ngIf="!login">Login</button>
   <button mat-button routerLink='/users/{{userId}}' (click)='onProfileClick()' *ngIf="login">{{user?.name}}</button>

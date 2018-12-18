@@ -32,7 +32,7 @@ export class PostSingleComponent implements OnInit {
   }
 
   ngOnChanges(changes: any) {
-    if (changes.post) {
+    if (changes.post && this.post != null) {
       this.internalPost = changes.post.currentValue;
       this.user = this.userService.getUserWithId(this.internalPost.postUId);
       this.room = this.roomService.getRoom(this.internalPost.postRoomId);

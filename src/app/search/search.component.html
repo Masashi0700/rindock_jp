@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-form-field>
+    <input matInput placeholder="Search" [formControl]="searchFormControl">
+  </mat-form-field>
+  <mat-select placeholder="Type">
+    <mat-option>Post</mat-option>
+    <mat-option>User</mat-option>
+    <mat-option>Room</mat-option>
+  </mat-select>
+  <button mat-raised-button (click)="onSubmit()">Go</button>
+</mat-card>
+
+<app-search-result [word]="searchWord" [type]="searchType"></app-search-result>

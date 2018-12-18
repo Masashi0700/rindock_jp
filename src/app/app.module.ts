@@ -87,6 +87,9 @@ import { RoomMemberListComponent } from './room-member-list/room-member-list.com
 import { TutorSingleComponent } from './tutor-single/tutor-single.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchComponent } from './search/search.component';
+import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +145,10 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     RoomMemberListComponent,
     TutorSingleComponent,
     UserMenuComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    SearchResultComponent,
+    SearchComponent,
+    SearchTagToComponent
   ],
   imports: [
     BrowserModule,

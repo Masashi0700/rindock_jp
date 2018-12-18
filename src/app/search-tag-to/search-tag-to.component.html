@@ -1,0 +1,3 @@
+<app-post-single *ngIf="isPost" [post]="(post | async)"></app-post-single>
+<app-room-info *ngIf="isRoom" [room]="(room | async)"></app-room-info>
+<app-user-simple *ngIf="isUser" [userInput]="(user | async)"></app-user-simple>

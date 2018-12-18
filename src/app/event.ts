@@ -7,7 +7,8 @@ export class Event {
   eventUserId: string;
   eventName: string;
   eventDesc: string;
-  eventDate: number
+  eventDate: number;
+  eventNumOfLikes: number;
 
   constructor(eventId: string, eventRoomId: string, eventUserId: string, eventName: string, eventDesc: string) {
     this.eventId = eventId;
@@ -16,6 +17,7 @@ export class Event {
     this.eventName = eventName;
     this.eventDesc = eventDesc;
     this.eventDate = +moment();
+    this.eventNumOfLikes = 0;
   }
 
   reset() {
@@ -25,6 +27,7 @@ export class Event {
     this.eventName = '';
     this.eventDesc = '';
     this.eventDate = 0;
+    this.eventNumOfLikes = 0;
   }
 
   deserialize() {
