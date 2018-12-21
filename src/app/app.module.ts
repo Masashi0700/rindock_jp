@@ -36,6 +36,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { RoomsComponent } from './rooms/rooms.component';
@@ -176,6 +178,8 @@ import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
     MatDividerModule,
     MatMenuModule,
     MatGridListModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

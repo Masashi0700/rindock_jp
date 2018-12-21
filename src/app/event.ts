@@ -1,4 +1,6 @@
 import * as moment from 'moment';
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 export class Event {
 
@@ -7,15 +9,19 @@ export class Event {
   eventUserId: string;
   eventName: string;
   eventDesc: string;
-  eventDate: number;
+  eventStartDate: Timestamp;
+  eventEndDate: Timestamp;
+  eventAccepted: boolean;
 
-  constructor(eventId: string, eventRoomId: string, eventUserId: string, eventName: string, eventDesc: string) {
+  constructor(eventId: string, eventRoomId: string, eventUserId: string, eventName: string, eventDesc: string, startDate: moment.Moment, endDate: moment.Moment) {
     this.eventId = eventId;
     this.eventRoomId = eventRoomId;
     this.eventUserId = eventUserId;
     this.eventName = eventName;
     this.eventDesc = eventDesc;
-    this.eventDate = +moment();
+    this.eventStartDate = Timestamp.fromDate(startDate.toDate());
+    this.eventEndDate = Timestamp.fromDate(endDate.toDate());
+    this.eventAccepted = false;
   }
 
   reset() {
@@ -24,7 +30,9 @@ export class Event {
     this.eventUserId = '';
     this.eventName = '';
     this.eventDesc = '';
-    this.eventDate = 0;
+    this.eventStartDate = Timestamp.fromDate(moment().toDate());
+    this.eventEndDate = Timestamp.fromDate(moment().toDate());
+    this.eventAccepted = false;
   }
 
   deserialize() {

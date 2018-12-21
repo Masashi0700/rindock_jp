@@ -1,14 +1,16 @@
-<div>
-  <mat-card>
-    <span>Post list</span>
-    <button mat-button (click)="onClickedPostButton()">
-      <mat-icon>note_add</mat-icon>Create a new post!
-    </button>
-  </mat-card>
-</div>
+<div fxLayout="column wrap">
+  <div>
+    <mat-card>
+      <span>Post list</span>
+      <button mat-button (click)="onClickedPostButton()">
+        <mat-icon>note_add</mat-icon>Create a new post!
+      </button>
+    </mat-card>
+  </div>
 
-<div fxLayout="row wrap">
-  <div fxFlex="33.3" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" *ngFor="let post of (posts | async)">
-    <app-post-single *ngIf="post" [post]="post"></app-post-single>
+  <div fxLayout="row wrap">
+    <div fxFlex="33.3" fxFlex.sm="33.3" fxFlex.xs="100" *ngFor="let post of (posts | async)">
+      <app-post-single *ngIf="post" [post]="post"></app-post-single>
+    </div>
   </div>
 </div>

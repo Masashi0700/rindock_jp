@@ -1,13 +1,39 @@
-<mat-sidenav-container>
-  <mat-sidenav fxShow fxHide.lt-md="true" opened mode="side">
+<div fxLayout="row wrap">
+  <div fxFlex="20" fxShow fxHide.md="true" fxHide.sm="true" fxHide.xs="true">
     <app-room-info [room]="(room | async)"></app-room-info>
     <app-room-event-new [room]="(room | async)"></app-room-event-new>
     <app-room-event-index [room]="(room | async)"></app-room-event-index>
-  </mat-sidenav>
-  <mat-sidenav fxShow fxHide.lt-sm="true" opened mode="side" position="end">
+  </div>
+  <div fxFlex="60" fxFlex.md="80" fxFlex.sm="100" fxFlex.xs="100">
+    <section>
+      <app-room-post-index></app-room-post-index>
+    </section>
+  </div>
+  <div fxFlex="20" fxShow fxHide.sm="true" fxHide.xs="true">
     <app-room-member-list [roomId]="roomId"></app-room-member-list>
-  </mat-sidenav>
-  <section>
-    <app-room-post-index></app-room-post-index>
-  </section>
-</mat-sidenav-container>
+  </div>
+</div>
+
+<!--
+<div>
+  <mat-sidenav-container>
+    <div fxFlex="20" fxShow fxHide.lt-md="true">
+      <mat-sidenav opened mode="side">
+        <app-room-info [room]="(room | async)"></app-room-info>
+        <app-room-event-new [room]="(room | async)"></app-room-event-new>
+        <app-room-event-index [room]="(room | async)"></app-room-event-index>
+      </mat-sidenav>
+    </div>
+    <div fxFlex="20" fxShow fxHide.lt-sm="true">
+      <mat-sidenav opened mode="side" position="end">
+        <app-room-member-list [roomId]="roomId"></app-room-member-list>
+      </mat-sidenav>
+    </div>
+    <div fxFlex="60">
+      <section>
+        <app-room-post-index></app-room-post-index>
+      </section>
+    </div>
+  </mat-sidenav-container>
+</div>
+-->

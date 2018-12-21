@@ -3,11 +3,14 @@
     <img mat-card-avatar *ngIf="internalRoom?.roomImgName" [src]="internalRoom?.roomImgUrl" alt="Preview of your user image">
     <img mat-card-avatar *ngIf="!internalRoom?.roomImgName" [src]="defaultRoomImg" alt="Preview of your user image">
     <mat-card-title>{{internalRoom?.roomName}}</mat-card-title>
+    <mat-card-subtitle>Created by {{(roomOwner | async)?.name}}</mat-card-subtitle>
   </mat-card-header>
-  <app-sub-button [roomId]="internalRoom?.roomId"></app-sub-button>
-  <mat-card-subtitle>Rest: {{internalRoom?.roomBreakTime}} min</mat-card-subtitle>
   <mat-card-content>{{internalRoom?.roomDesc}}</mat-card-content>
-  <mat-card-content>{{(roomOwner | async)?.name}}</mat-card-content>
-  <button mat-raised-button (click)="onEditRoomClicked()">Edit room</button>
   <app-tag-list [subjectId]="internalRoom?.roomId" [canEdit]="true" [subjectType]="'room'"></app-tag-list>
+  <mat-card-actions>
+    <app-sub-button [roomId]="internalRoom?.roomId"></app-sub-button>
+    <button mat-icon-button (click)="onEditRoomClicked()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>
