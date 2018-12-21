@@ -5,9 +5,6 @@ export class User {
   desc: string;
   imgName: string;
   imgUrl: string;
-  numOfLikes: number;
-  numOfFollows: number;
-  numOfFollowers: number;
   isPublic: boolean;
 
   constructor(uid: string, name: string) {
@@ -16,9 +13,6 @@ export class User {
     this.desc = '';
     this.imgName = '';
     this.imgUrl = '';
-    this.numOfLikes = 0;
-    this.numOfFollows = 0;
-    this.numOfFollowers = 0;
     this.isPublic = true;
   }
 
@@ -28,9 +22,6 @@ export class User {
     this.desc = '';
     this.imgName = '';
     this.imgUrl = '';
-    this.numOfLikes = 0;
-    this.numOfFollows = 0;
-    this.numOfFollowers = 0;
     this.isPublic = true;
   }
 

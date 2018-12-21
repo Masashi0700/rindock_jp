@@ -50,8 +50,7 @@ export class UserService {
   }
 
   addLike(userId: string) {
-    const userRef = this.db.collection('users').doc(user.uid);
-    this
+    const userRef = this.db.collection('users').doc(userId);
   }
 
 }

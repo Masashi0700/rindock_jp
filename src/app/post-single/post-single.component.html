@@ -18,7 +18,7 @@
     <p>
       {{internalPost?.postContent}}
     </p>
-    <app-tag-list [subjectId]="internalPost?.postId" [canEdit]="true" [subjectType]="'post'"></app-tag-list>
+    <app-tag-list [subjectId]="internalPost?.postId" [canEdit]="false" [subjectType]="'post'"></app-tag-list>
   </mat-card-content>
   <mat-card-actions>
     <app-like-button [postId]="internalPost?.postId"></app-like-button>

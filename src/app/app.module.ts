@@ -35,6 +35,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomIndexComponent } from './room-index/room-index.component';
@@ -173,6 +175,8 @@ import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
     MatChipsModule,
     MatDividerModule,
     MatMenuModule,
+    MatGridListModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule

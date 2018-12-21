@@ -7,6 +7,8 @@
   </mat-card>
 </div>
 
-<div *ngFor="let post of (posts | async)">
-  <app-post-single *ngIf="post" [post]="post"></app-post-single>
+<div fxLayout="row wrap">
+  <div fxFlex="33.3" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" *ngFor="let post of (posts | async)">
+    <app-post-single *ngIf="post" [post]="post"></app-post-single>
+  </div>
 </div>
