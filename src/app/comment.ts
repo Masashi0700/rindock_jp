@@ -1,4 +1,5 @@
-import * as moment from 'moment';
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 export class Comment {
 
@@ -6,13 +7,13 @@ export class Comment {
   uid: string;
   roomId: string;
   content: string;
-  date: number;
+  date: Timestamp;
 
   constructor(uid: string, content: string) {
     this.uid = uid;
     this.roomId = '';
     this.content = content;
-    this.date = +moment();
+    this.date = Timestamp.now();
   }
 
   reset() {
@@ -20,7 +21,7 @@ export class Comment {
     this.uid = '';
     this.roomId = '';
     this.content = '';
-    this.date = 0;
+    this.date = Timestamp.now();
   }
 
   deserialize() {

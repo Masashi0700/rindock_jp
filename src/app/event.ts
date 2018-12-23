@@ -12,6 +12,7 @@ export class Event {
   eventStartDate: Timestamp;
   eventEndDate: Timestamp;
   eventAccepted: boolean;
+  eventNumOfLikes: number;
 
   constructor(eventId: string, eventRoomId: string, eventUserId: string, eventName: string, eventDesc: string, startDate: moment.Moment, endDate: moment.Moment) {
     this.eventId = eventId;
@@ -22,6 +23,7 @@ export class Event {
     this.eventStartDate = Timestamp.fromDate(startDate.toDate());
     this.eventEndDate = Timestamp.fromDate(endDate.toDate());
     this.eventAccepted = false;
+    this.eventNumOfLikes = 0;
   }
 
   reset() {
@@ -33,6 +35,7 @@ export class Event {
     this.eventStartDate = Timestamp.fromDate(moment().toDate());
     this.eventEndDate = Timestamp.fromDate(moment().toDate());
     this.eventAccepted = false;
+    this.eventNumOfLikes = 0;
   }
 
   deserialize() {

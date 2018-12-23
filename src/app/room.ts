@@ -1,3 +1,6 @@
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
+
 export class Room {
 
   roomId: string;
@@ -10,6 +13,9 @@ export class Room {
   roomPassword: string;
   roomDesc: string;
   roomOwnerId: string;
+  roomNumOfPost: number;
+  roomNumOfSubs: number;
+  roomDate: Timestamp;
 
   constructor(roomId: string, roomName: string, breakTime: string, chat: string, isRoomPublic: boolean, roomPassword: string, roomDesc: string) {
     this.roomId = roomId;
@@ -22,6 +28,9 @@ export class Room {
     this.roomPassword = roomPassword;
     this.roomDesc = roomDesc;
     this.roomOwnerId = '';
+    this.roomNumOfPost = 0;
+    this.roomNumOfSubs = 0;
+    this.roomDate = Timestamp.now();
   }
 
   reset() {
@@ -35,6 +44,9 @@ export class Room {
     this.roomPassword = '';
     this.roomDesc = '';
     this.roomOwnerId = '';
+    this.roomNumOfPost = 0;
+    this.roomNumOfSubs = 0;
+    this.roomDate = Timestamp.now();
   }
 
   deserialize() {

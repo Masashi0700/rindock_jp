@@ -1,4 +1,5 @@
-import * as moment from 'moment';
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 export class Post {
 
@@ -9,7 +10,9 @@ export class Post {
   postUId: string;
   postContent: string;
   postRoomId: string;
-  postDate: number;
+  postNumOfLikes: number;
+  postNumOfReplys: number;
+  postDate: Timestamp;
 
   constructor(uid: string, content: string) {
     this.postId = '';
@@ -19,7 +22,9 @@ export class Post {
     this.postUId = uid;
     this.postContent = content;
     this.postRoomId = '';
-    this.postDate = +moment();
+    this.postNumOfLikes = 0;
+    this.postNumOfReplys = 0;
+    this.postDate = Timestamp.now();
   }
 
   reset() {
@@ -30,7 +35,9 @@ export class Post {
     this.postUId = '';
     this.postContent = '';
     this.postRoomId = '';
-    this.postDate = 0;
+    this.postNumOfLikes = 0;
+    this.postNumOfReplys = 0;
+    this.postDate = Timestamp.now();
   }
 
   deserialize() {
