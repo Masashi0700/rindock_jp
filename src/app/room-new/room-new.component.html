@@ -29,13 +29,9 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-checkbox formControlName="publicFormControl" (change)="toggle(publicFormControl.value)">
+    <mat-checkbox formControlName="publicFormControl">
       Public
     </mat-checkbox>
-
-    <mat-form-field>
-      <input matInput type="password" placeholder="Password" formControlName="passwordFormControl">
-    </mat-form-field>
 
     <mat-form-field>
       <textarea matInput placeholder="description" formControlName="descFormControl"></textarea>

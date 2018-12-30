@@ -1,6 +1,4 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Post } from '../post';
 import { PostService } from '../post.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -18,7 +16,6 @@ export class ReplyButtonComponent implements OnInit {
   public internalPost: Post;
   public internalPostId: string;
   public internalRoomId: string;
-  numOfReplys: number;
 
   constructor(private postService: PostService,
     public dialog: MatDialog) { }
@@ -29,8 +26,6 @@ export class ReplyButtonComponent implements OnInit {
   ngOnChanges(changes: any) {
     if (changes.postId) {
       this.internalPostId = this.postId;
-      this.postService.getReplyWithPostId(this.internalPostId)
-        .subscribe(posts => this.numOfReplys = posts.length);
     }
     if(changes.roomId){
       this.internalRoomId = this.roomId;

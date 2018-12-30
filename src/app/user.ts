@@ -12,6 +12,7 @@ export class User {
   numOfPost: number;
   numOfFollow: number;
   numOfFollower: number;
+  numOfBlacklist: number;
   date: Timestamp;
 
   constructor(uid: string, name: string) {
@@ -24,6 +25,7 @@ export class User {
     this.numOfPost = 0;
     this.numOfFollow = 0;
     this.numOfFollower = 0;
+    this.numOfBlacklist = 0;
     this.date = Timestamp.now();
   }
 
@@ -37,6 +39,7 @@ export class User {
     this.numOfPost = 0;
     this.numOfFollow = 0;
     this.numOfFollower = 0;
+    this.numOfBlacklist = 0;
     this.date = Timestamp.now();
   }
 

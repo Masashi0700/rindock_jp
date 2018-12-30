@@ -14,7 +14,6 @@ export class EventLikeButtonComponent implements OnInit {
   @Input() eventId: string;
   public internalEventId: string;
   eventLiked: Observable<boolean>;
-  numOfEventLikes: number;
 
   constructor(private eventLikeService: EventLikeService,
     private session: SessionService) { }
@@ -27,8 +26,6 @@ export class EventLikeButtonComponent implements OnInit {
       this.internalEventId = this.eventId;
       this.eventLiked = this.eventLikeService
         .checkEventLikeWithUserIdAndEventId(this.session.currentUserId, this.internalEventId);
-      this.eventLikeService.getEventLikesWithEventId(this.internalEventId)
-        .subscribe(eventLikes => this.numOfEventLikes = eventLikes.length);
     }
   }
 

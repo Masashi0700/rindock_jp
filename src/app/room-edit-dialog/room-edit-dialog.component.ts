@@ -53,7 +53,6 @@ export class RoomEditDialogComponent implements OnInit {
       this.breakFormControl.value,
       this.chatFormControl.value,
       this.room.roomPublic,
-      this.room.roomPassword,
       this.descFormControl.value
     );
     editedRoom.roomOwnerId = this.room.roomOwnerId;

@@ -15,7 +15,6 @@ export class LikeButtonComponent implements OnInit {
   public internalPostId: string;
 
   liked: Observable<boolean>;
-  numOfLikes: number;
 
   constructor(private likeService: LikeService,
     private session: SessionService) { }
@@ -27,9 +26,6 @@ export class LikeButtonComponent implements OnInit {
     if (changes.postId) {
       this.internalPostId = this.postId;
       this.liked = this.likeService.checkLikeWithUserIdAndPostId(this.session.currentUserId, this.internalPostId);
-      this.likeService
-        .getLikesWithPostId(this.internalPostId)
-        .subscribe(posts => this.numOfLikes = posts.length);
     }
   }
 

@@ -22,7 +22,9 @@
   </mat-card-content>
   <mat-card-actions>
     <app-like-button [postId]="internalPost?.postId"></app-like-button>
+    <span>{{internalPost?.postNumOfLikes}}</span>
     <app-reply-button [post]="internalPost" [postId]="internalPost?.postId" [roomId]="internalPost?.postRoomId"></app-reply-button>
+    <span>{{internalPost?.postNumOfReplys}}</span>
     <app-user-menu [userId]="internalPost?.postUId" [roomId]="internalPost?.postRoomId"></app-user-menu>
   </mat-card-actions>
 </mat-card>

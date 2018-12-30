@@ -11,7 +11,6 @@ import { SessionService } from '../core/service/session.service';
 })
 export class RoomNewComponent implements OnInit {
 
-  //public room = new Room();
   public room: Room;
 
   roomNewFormGroup = new FormGroup({
@@ -28,24 +27,15 @@ export class RoomNewComponent implements OnInit {
     publicFormControl: new FormControl(true, [
       Validators.required
     ]),
-    passwordFormControl: new FormControl('', [
-      Validators.maxLength(30)
-    ]),
     descFormControl: new FormControl('', [
       Validators.maxLength(1000)
     ])
   });
 
-  toggle(isPublic: boolean) {
-    let control = this.roomNewFormGroup.get('passwordFormControl')
-    !isPublic ? control.enable() : control.disable();
-  }
-
   constructor(private roomService: RoomService,
     private session: SessionService) { }
 
   ngOnInit() {
-    this.roomNewFormGroup.get('passwordFormControl').disable();
   }
 
   onSubmit() {
@@ -58,8 +48,7 @@ export class RoomNewComponent implements OnInit {
   formToRoom() {
     this.room = new Room('', this.nameFormControl.value, this.breakFormControl.value,
       this.chatFormControl.value, this.publicFormControl.value,
-      this.passwordFormControl.value, this.descFormControl.value);
-    console.warn(this.room);
+      this.descFormControl.value);
   }
 
   get nameFormControl() {
@@ -76,10 +65,6 @@ export class RoomNewComponent implements OnInit {
 
   get publicFormControl() {
     return this.roomNewFormGroup.get('publicFormControl');
-  }
-
-  get passwordFormControl() {
-    return this.roomNewFormGroup.get('passwordFormControl');
   }
 
   get descFormControl() {
