@@ -1,4 +1,32 @@
 <mat-card>
-  <mat-card-content>{{internalEvent?.eventName}}</mat-card-content>
-  <app-event-like-button [eventId]="internalEvent?.eventId"></app-event-like-button>
+  <mat-card-header (click)="onEventClicked()">
+    <img mat-card-avatar *ngIf="(room | async)?.roomImgName" [src]="roomAvatar" alt="Preview of your room image">
+    <img mat-card-avatar *ngIf="!(room | async)?.roomImgName" [src]="roomImg" alt="Preview of your room image">
+    <mat-card-title>
+      {{internalEvent?.eventName}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <button mat-button routerLink='/rooms/{{(room | async)?.roomId}}'>
+        @{{(room | async)?.roomName}}
+      </button>
+      <div>
+        {{internalEvent?.eventStartDate?.toDate() | date: 'yyyy/MM/dd h:mm'}} ~ {{internalEvent?.eventEndDate?.toDate() | date: 'yyyy/MM/dd h:mm'}}
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content (click)="onEventClicked()">
+    <p>
+      {{internalEvent?.eventDesc}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-event-like-button [eventId]="internalEvent?.eventId"></app-event-like-button>
+    <span>{{internalEvent?.eventNumOfLikes}}</span>
+    <button mat-raised-button *ngIf="internalEvent?.eventLive && !internalEvent?.eventDone" (click)="onLiveClicked()">LIVE</button>
+    <button mat-raised-button *ngIf="internalEvent?.eventAccepted && !internalEvent?.eventLive && !internalEvent?.eventDone"
+      (click)="onAcceptClicked()">Accepted</button>
+    <button mat-raised-button *ngIf="!internalEvent?.eventAccepted && !internalEvent?.eventLive && !internalEvent?.eventDone"
+      (click)="onPendClicked()">Pending</button>
+    <button mat-raised-button *ngIf="internalEvent?.eventDone">Done</button>
+  </mat-card-actions>
 </mat-card>

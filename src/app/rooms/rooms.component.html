@@ -1,6 +1,7 @@
 <div fxLayout="row wrap">
   <div fxFlex="20" fxShow fxHide.md="true" fxHide.sm="true" fxHide.xs="true">
     <app-room-info [room]="(room | async)"></app-room-info>
+    <app-room-event-live [room]="(room | async)"></app-room-event-live>
     <app-room-event-new [room]="(room | async)"></app-room-event-new>
     <app-room-event-index [room]="(room | async)"></app-room-event-index>
   </div>

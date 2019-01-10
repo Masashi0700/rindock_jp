@@ -9,9 +9,10 @@ export class Event {
   eventUserId: string;
   eventName: string;
   eventDesc: string;
-  eventStartDate: Timestamp;
-  eventEndDate: Timestamp;
+  eventStartDate: Date;
+  eventEndDate: Date;
   eventAccepted: boolean;
+  eventLive: boolean;
   eventDone: boolean;
   eventNumOfLikes: number;
 
@@ -21,9 +22,10 @@ export class Event {
     this.eventUserId = eventUserId;
     this.eventName = eventName;
     this.eventDesc = eventDesc;
-    this.eventStartDate = Timestamp.fromDate(startDate.toDate());
-    this.eventEndDate = Timestamp.fromDate(endDate.toDate());
+    this.eventStartDate = startDate.toDate();
+    this.eventEndDate = endDate.toDate();
     this.eventAccepted = false;
+    this.eventLive = false;
     this.eventDone = false;
     this.eventNumOfLikes = 0;
   }
@@ -34,9 +36,10 @@ export class Event {
     this.eventUserId = '';
     this.eventName = '';
     this.eventDesc = '';
-    this.eventStartDate = Timestamp.fromDate(moment().toDate());
-    this.eventEndDate = Timestamp.fromDate(moment().toDate());
+    this.eventStartDate = moment().toDate();
+    this.eventEndDate = moment().toDate();
     this.eventAccepted = false;
+    this.eventLive = false;
     this.eventDone = false;
     this.eventNumOfLikes = 0;
   }

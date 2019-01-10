@@ -2,6 +2,10 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
 
+const firestore = admin.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true };
+firestore.settings(settings);
+
 export const helloWorld = functions.https.onRequest((request, response) => {
     response.send('Hello from Firebase!\n\n');
 });
@@ -140,10 +144,11 @@ export const onPost = functions.firestore.document('posts/{postId}')
     });
 
 export const checkEventStart = functions.https.onRequest((request, response) => {
-    const currentDate = admin.firestore.FieldValue.serverTimestamp();
+    const currentDate = new Date(Date.now());
     admin.firestore().collection("events")
         .where('eventDone', '==', false)
         .where('eventAccepted', '==', true)
+        .where('eventLive', '==', false)
         .where('eventStartDate', '<=', currentDate)
         .get()
         .then(snap => {
@@ -151,18 +156,26 @@ export const checkEventStart = functions.https.onRequest((request, response) => 
                 const roomRef = admin.firestore().collection('rooms').doc(doc.data().eventRoomId);
                 roomRef.update({ roomEventId: doc.data().eventId })
                     .catch(err => console.warn(err));
-                console.warn('currentDate =' + currentDate);
-                console.warn("updated:" + doc.data().eventRoomId);
+                const eventRef = admin.firestore().collection('events').doc(doc.data().eventId);
+                eventRef.update({ eventLive: true })
+                    .catch(err => console.warn(err));
+                console.warn(currentDate);
+                console.warn("updated:event: " + doc.data().eventId + ", room: " + doc.data().eventRoomId);
             });
+            response.status(200).send("Checking events ended successful");
         })
-        .catch(err => console.warn(err));
+        .catch(err => {
+            console.warn(err);
+            response.status(200).send("Checking events ended failure");
+        });
 });
 
 export const checkEventEnd = functions.https.onRequest((request, response) => {
-    const currentDate = admin.firestore.FieldValue.serverTimestamp();
+    const currentDate = new Date(Date.now());
     admin.firestore().collection("events")
         .where('eventDone', '==', false)
         .where('eventAccepted', '==', true)
+        .where('eventLive', '==', true)
         .where('eventEndDate', '<=', currentDate)
         .get()
         .then(snap => {
@@ -171,11 +184,18 @@ export const checkEventEnd = functions.https.onRequest((request, response) => {
                 roomRef.update({ roomEventId: '' })
                     .catch(err => console.warn(err));
                 const eventRef = admin.firestore().collection('events').doc(doc.data().eventId);
-                eventRef.update({ eventDone: true })
+                eventRef.update({
+                    eventDone: true,
+                    eventLive: false
+                })
                     .catch(err => console.warn(err));
-                console.warn('currentDate =' + currentDate);
-                console.warn("updated:" + doc.data().eventRoomId);
+                console.warn(currentDate);
+                console.warn("updated:event: " + doc.data().eventId + ", room: " + doc.data().eventRoomId);
+                response.status(200).send("Checking events ended successful");
             });
         })
-        .catch(err => console.warn(err));
+        .catch(err => {
+            console.warn(err);
+            response.status(200).send("Checking events ended failure");
+        });
 });

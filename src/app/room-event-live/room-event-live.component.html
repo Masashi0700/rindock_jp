@@ -1,0 +1,9 @@
+<app-event-simple *ngIf="internalRoom?.roomEventId" [event]="(eventLive | async)"></app-event-simple>
+<mat-card *ngIf="!internalRoom?.roomEventId">
+  <mat-card-title>
+    Currently no event
+  </mat-card-title>
+  <mat-card-content>
+    Create your event!
+  </mat-card-content>
+</mat-card>

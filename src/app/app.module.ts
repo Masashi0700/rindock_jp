@@ -94,6 +94,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchComponent } from './search/search.component';
 import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
+import { RoomEventLiveComponent } from './room-event-live/room-event-live.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +153,8 @@ import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
     SearchBoxComponent,
     SearchResultComponent,
     SearchComponent,
-    SearchTagToComponent
+    SearchTagToComponent,
+    RoomEventLiveComponent
   ],
   imports: [
     BrowserModule,
