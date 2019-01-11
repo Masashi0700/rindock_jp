@@ -95,6 +95,11 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchComponent } from './search/search.component';
 import { SearchTagToComponent } from './search-tag-to/search-tag-to.component';
 import { RoomEventLiveComponent } from './room-event-live/room-event-live.component';
+import { RoomBarComponent } from './room-bar/room-bar.component';
+import { RoomBarListComponent } from './room-bar-list/room-bar-list.component';
+import { RoomSubsToBarComponent } from './room-subs-to-bar/room-subs-to-bar.component';
+import { RoomSubsListComponent } from './room-subs-list/room-subs-list.component';
+import { RoomHotEventListComponent } from './room-hot-event-list/room-hot-event-list.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +159,12 @@ import { RoomEventLiveComponent } from './room-event-live/room-event-live.compon
     SearchResultComponent,
     SearchComponent,
     SearchTagToComponent,
-    RoomEventLiveComponent
+    RoomEventLiveComponent,
+    RoomBarComponent,
+    RoomBarListComponent,
+    RoomSubsToBarComponent,
+    RoomSubsListComponent,
+    RoomHotEventListComponent
   ],
   imports: [
     BrowserModule,

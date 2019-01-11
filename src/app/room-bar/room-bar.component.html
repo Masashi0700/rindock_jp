@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-header>
+      <img mat-card-avatar *ngIf="internalRoom?.roomImgName" [src]="internalRoom.roomImgUrl" alt="Preview of your room image">
+      <img mat-card-avatar *ngIf="!internalRoom?.roomImgName" [src]="roomImg" alt="Preview of your room image">
+      <mat-card-title>{{internalRoom?.roomName}}</mat-card-title>
+  </mat-card-header>
+</mat-card>

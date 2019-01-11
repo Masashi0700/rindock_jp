@@ -1,2 +1,12 @@
-<app-room-new></app-room-new>
-<app-room-index></app-room-index>
+<div fxLayout="row wrap">
+    <div fxFlex="20" fxShow fxHide.xs="true">
+        <app-room-subs-list></app-room-subs-list>
+    </div>
+    <div fxFlex="60" fxFlex.md="80" fxFlex.sm="100" fxFlex.xs="100">
+        <app-room-hot-event-list></app-room-hot-event-list>
+        <app-room-index></app-room-index>
+    </div>
+    <div fxFlex="20" fxShow fxHide.sm="true" fxHide.xs="true">
+        <app-room-new></app-room-new>
+    </div>
+</div>

@@ -31,4 +31,13 @@ export class EventService {
     return this.db.collection<Event>('events', ref => ref.where('eventUserId', '==', userId)).valueChanges();
   }
 
+  getHotEvents(amount: number): Observable<Event[]> {
+    return this.db.collection<Event>('events', ref =>
+      ref.where('eventLive', '==', true)
+        .where('eventDone', '==', false)
+        .orderBy('eventNumOfLikes', 'desc')
+        .limit(amount))
+      .valueChanges();
+  }
+
 }
