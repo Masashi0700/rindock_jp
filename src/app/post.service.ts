@@ -113,5 +113,39 @@ export class PostService {
     });
   }
 
-
+  getHotPosts(amount: number, range: string): Observable<Post[]> {//"day","week","month","year","all","new"
+    if (range === "day") {
+      return this.db.collection<Post>('posts', ref =>
+        ref.where('postAgeDay', '==', true)
+          .orderBy('postNumOfLikes', 'desc')
+          .limit(amount)).valueChanges();
+    } else if (range === "week") {
+      return this.db.collection<Post>('posts', ref =>
+        ref.where('postAgeWeek', '==', true)
+          .orderBy('postNumOfLikes', 'desc')
+          .limit(amount)).valueChanges();
+    } else if (range === "month") {
+      return this.db.collection<Post>('posts', ref =>
+        ref.where('postAgeMonth', '==', true)
+          .orderBy('postNumOfLikes', 'desc')
+          .limit(amount)).valueChanges();
+    } else if (range === "year") {
+      return this.db.collection<Post>('posts', ref =>
+        ref.where('postAgeYear', '==', true)
+          .orderBy('postNumOfLikes', 'desc')
+          .limit(amount)).valueChanges();
+    } else if (range === "all") {
+      return this.db.collection<Post>('posts', ref =>
+        ref.orderBy('postNumOfLikes', 'desc')
+          .limit(amount)).valueChanges();
+    } else if (range === "new") {//new
+      return this.db.collection<Post>('posts', ref =>
+        ref.orderBy('postDate', 'desc')
+          .limit(amount)).valueChanges();
+    } else {
+      return this.db.collection<Post>('posts', ref =>
+        ref.orderBy('postDate', 'desc')
+          .limit(amount)).valueChanges();
+    }
+  }
 }

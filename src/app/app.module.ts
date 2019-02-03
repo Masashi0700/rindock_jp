@@ -100,6 +100,8 @@ import { RoomBarListComponent } from './room-bar-list/room-bar-list.component';
 import { RoomSubsToBarComponent } from './room-subs-to-bar/room-subs-to-bar.component';
 import { RoomSubsListComponent } from './room-subs-list/room-subs-list.component';
 import { RoomHotEventListComponent } from './room-hot-event-list/room-hot-event-list.component';
+import { PostHotComponent } from './post-hot/post-hot.component';
+import { RoomGeneralComponent } from './room-general/room-general.component';
 
 @NgModule({
   declarations: [
@@ -164,7 +166,9 @@ import { RoomHotEventListComponent } from './room-hot-event-list/room-hot-event-
     RoomBarListComponent,
     RoomSubsToBarComponent,
     RoomSubsListComponent,
-    RoomHotEventListComponent
+    RoomHotEventListComponent,
+    PostHotComponent,
+    RoomGeneralComponent
   ],
   imports: [
     BrowserModule,

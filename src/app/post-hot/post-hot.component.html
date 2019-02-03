@@ -1,0 +1,8 @@
+<div>
+  <mat-card>
+    Hot Posts!
+  </mat-card>
+</div>
+<div *ngFor="let post of (posts | async)">
+  <app-post-single [post]="post"></app-post-single>
+</div>

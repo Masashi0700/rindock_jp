@@ -12,6 +12,10 @@ export class Post {
   postRoomId: string;
   postNumOfLikes: number;
   postNumOfReplys: number;
+  postAgeDay: boolean;
+  postAgeWeek: boolean;
+  postAgeMonth: boolean;
+  postAgeYear: boolean; 
   postDate: Timestamp;
 
   constructor(uid: string, content: string) {
@@ -24,6 +28,10 @@ export class Post {
     this.postRoomId = '';
     this.postNumOfLikes = 0;
     this.postNumOfReplys = 0;
+    this.postAgeDay = true;
+    this.postAgeWeek = true;
+    this.postAgeMonth = true;
+    this.postAgeYear = true;
     this.postDate = Timestamp.now();
   }
 
@@ -37,6 +45,10 @@ export class Post {
     this.postRoomId = '';
     this.postNumOfLikes = 0;
     this.postNumOfReplys = 0;
+    this.postAgeDay = true;
+    this.postAgeWeek = true;
+    this.postAgeMonth = true;
+    this.postAgeYear = true;
     this.postDate = Timestamp.now();
   }
 
